@@ -1,0 +1,20 @@
+@use "fonts";
+
+$font-fig: "Inter", sans-serif;
+$font-body: "Inria Serif", serif;
+$font-display: "Libertinus Serif Display", serif;
+$font-accent: "Cormorant Garamond", serif;
+
+
+body {
+  font-family: $font-body;
+}
+
+h1 {
+  font-family: $font-body;
+}
+
+h2,
+h3 {
+  font-family: $font-serif;
+}
