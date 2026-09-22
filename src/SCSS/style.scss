@@ -1,5 +1,9 @@
 @use "fonts";
+@use "pages";
+@use "projects";
 
+
+//FONTS
 $font-fig: "Inter", sans-serif;
 $font-body: "Inria Serif", serif;
 $font-display: "Libertinus Serif Display", serif;
@@ -17,4 +21,19 @@ h1 {
 h2,
 h3 {
   font-family: $font-serif;
+}
+
+//PAGES
+
+
+//PROJECTS
+
+
+
+//GLOBAL
+body {
+  margin: 0;
+  font-family: $font-body;
+  font-size: 1rem;
+  line-height: 1.5;
 }
