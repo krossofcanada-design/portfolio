@@ -1,31 +1,3 @@
-@font-face {
-  font-family: "Inria Serif";
-  src: url("../assets/fonts/inria-serif/InriaSerif-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Libertinus Serif Display";
-  src: url("../assets/fonts/libertinus-serif-display/LibertinusSerifDisplay-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Cormorant Garamond";
-  src: url("../assets/fonts/cormorant-garamond/CormorantGaramond-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../assets/fonts/inter/Inter-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 body {
   min-height: 100vh;
   background-color: #02110B;
@@ -33,23 +5,10 @@ body {
 
 .project-card {
   min-height: 400px;
-  background-image: url("../img/Projects/paper.jpg");
+  background-image: url("../assets/img/Projects/paper.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-body {
-  font-family: "Inria Serif", serif;
-}
-
-h1 {
-  font-family: "Inria Serif", serif;
-}
-
-h2,
-h3 {
-  font-family: "Inria Serif", serif;
 }
 
 body {
@@ -57,4 +16,16 @@ body {
   font-family: "Inria Serif", serif;
   font-size: 1rem;
   line-height: 1.5;
+  color: #fff;
+}
+
+h1 {
+  font-family: "Inria Serif", serif;
+  color: #F9A742;
+}
+
+h2,
+h3 {
+  font-family: "Cormorant Garamond", serif;
+  color: #333;
 }/*# sourceMappingURL=style.css.map */

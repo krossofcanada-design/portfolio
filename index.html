@@ -8,17 +8,38 @@
     <link rel="stylesheet" href="src/SCSS/style.css">
     <script src="src/js/main.js" defer></script>
 
+    <!-- Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Inria Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Cormorant Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+    <!-- Libertinus Serif-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libertinus+Serif+Display&display=swap" rel="stylesheet">
+
+
 </head>
 
 <body>
     <header>
         <div class="logo" >
-            <h2>Klaudia Ross</h2>
-            <p>Connection-Centered Digital Design</p>
+            <p class="logo_title" >Klaudia Ross</p>
+            <p class="logo_philosophy" >Connection-Centered Digital Design</p>
         </div>
 
         <nav>
-            <button class="menu-toggle" aria-label="Open menu">
+            <button class="menu_toggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -30,23 +51,70 @@
 
                 <button class="projects-toggle">Projects</button>
 
-                <div class="project-links">
+                <div class="project_links">
                     <a href="Projects/kystnaer.html">Kystnær</a>
                     <a href="Projects/geografisk-have.html">Geografisk Have</a>
                     <a href="Projects/carol-christina.html">Carol Christina</a>
                 </div>
 
-                <a href="contact.html">Contact</a>
+                <a href="mailto:krossofcanada@gmail.com">Contact</a>
             </div>
         </nav>
 
     </header>
 
     <main>
-        <p>sdfsdfsdf</p>
+        <section class="hero" >
+            <div class="hero_content" >
+                <h1>Digital Designer</h1>
+                <p class="hero_philosophy" >Good design is informed and shaped by the environment it lives in.</p>
+                <p class="hero_target" >I work with organizations and research-driven teams to understand people, explore problems, and shape complex ideas into purposeful digital experiences.</p>
+                <a hero_cta href="mailto:krossofcanada@gmail.com">Connect with me -></a>
+            </div>
+
+            <figure>
+                <img src="img/Main/Flower.png" alt="Diphylleia grayi skeleton flowers">
+                <figcaption class="hero_caption">
+                    <strong>Fig. 01</strong><br>
+                    <em>Diphylleia grayi</em><br>
+                    The delicate white petals become transparent upon interaction with water.
+                </figcaption>
+            </figure>
+        </section>
+
+        <section class="book" aria-label="Projects and about">
+            
+            <div class="book_page-left">
+                <h2>Projects</h2>
+                <ul class="project-list">
+                <li><a href="Projects/kystnaer.html">Kystnær →</a><p>A research-led product repositioning</p></li>
+                <li><a href="Projects/geografisk-have.html">Geografisk Have →</a><p>A shared identity for many audiences</p></li>
+                <li><a href="Projects/carol-christina.html">Carol Christina →</a><p>Creating trust on a website </p></li>
+
+                <!-- No link, just a teaser for an upcoming project -->
+                <li class="project-list__item--upcoming"><span>Upcoming</span>
+                    <p>CoTinker Lab</p><p>Participatory Design in education</p></li>
+                </ul>
+            </div>
+
+            <div class="book_page-right">
+                <h2>About &amp; Approach</h2>
+                <p class="my_traits">Curious by nature<br>Analytical by training<br>Creative by choice</p>
+                <a href="About.html">My approach and background →</a>
+            </div>
+
+            <img src="img/Main/Notebook.png" alt="Notebook" aria-hidden="true">
+
+        </section>
     </main>
 
-    
+    <footer class="site-footer">
+        <p>©2026 Klaudia Ross</p>
+        <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="mailto:krossofcanada@gmail.com">Contact</a></nav>
+    </footer>
+
+    <div class="magnifier" aria-hidden="true"></div>
+
 </body>
 
 </html>
