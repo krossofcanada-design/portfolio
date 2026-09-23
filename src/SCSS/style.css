@@ -34,6 +34,383 @@ button {
   z-index: 100;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   padding: 2rem 3rem;
+}
+
+.logo_link {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo_title {
+  font-family: "Inria Serif", serif;
+  color: #F9A742;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.logo_philosophy {
+  margin-top: 0.2rem;
+  font-family: "Inria Serif", serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.menu_toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu_toggle span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #F9A742;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 3.5rem;
+  right: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  min-width: 10rem;
+  padding: 1.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+}
+
+.menu a,
+.projects-toggle {
+  color: #F9A742;
+  font-family: "Inria Serif", serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu a:hover,
+.projects-toggle:hover {
+  opacity: 0.6;
+}
+
+.project_links {
+  display: none;
+  color: #ffffff;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding-right: 1rem;
+}
+
+.project_links a {
+  font-size: 0.7rem;
+}
+
+.scene {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 6rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero_content {
+  width: min(90%, 42rem);
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: "Inria Serif", serif;
+  color: #F9A742;
+  font-size: clamp(3rem, 5vw, 7rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.hero_philosophy {
+  margin: 2rem auto;
+  max-width: 32rem;
+  font-family: "Inria Serif", serif;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.hero_target {
+  max-width: 34rem;
+  margin: 2rem auto;
+  font-family: "Inria Serif", serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.hero_rule {
+  width: 7rem;
+  height: 1px;
+  margin: 1.5rem auto;
+  background-color: #F9A742;
+}
+
+.hero_cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  font-family: "Inria Serif", serif;
+  color: #F9A742;
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: gap 0.3s ease, opacity 0.3s ease;
+}
+
+.hero_cta:hover {
+  gap: 0.4rem;
+}
+
+.flower {
+  position: absolute;
+  width: 18rem;
+  top: 12%;
+  right: 8%;
+  z-index: 2;
+}
+
+.flower img {
+  width: 100%;
+  height: auto;
+}
+
+.hero_caption {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.75rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.hero_caption strong {
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.caption_species {
+  margin-top: 0.15rem;
+}
+
+.caption_description {
+  max-width: 16rem;
+  margin-top: 0.4rem;
+  font-size: 0.6rem;
+  line-height: 1.5;
+}
+
+.book {
+  position: absolute;
+  width: 42rem;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.book_image {
+  width: 100%;
+  height: auto;
+}
+
+.book_page {
+  position: absolute;
+  top: 12%;
+  width: 35%;
+  font-family: "Cormorant Garamond", serif;
+  color: #ffffff;
+}
+
+.book_page-left {
+  left: 9%;
+}
+
+.book_page-right {
+  right: 9%;
+}
+
+.book_page h2 {
+  font-family: "Cormorant Garamond", serif;
+  color: #02110B;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.18em;
+}
+
+.page_rule {
+  width: 4rem;
+  height: 1px;
+  margin: 0.75rem 0;
+  background-color: #936227;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  list-style: none;
+}
+
+.project-list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.project-list__item a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: "Cormorant Garamond", serif;
+  color: #02110B;
+  font-size: 1.15rem;
+  font-weight: 600;
+  transition: opacity 0.3s ease, gap 0.3s ease;
+}
+
+.project-list__item a:hover {
+  opacity: 0.6;
+  gap: 0.7rem;
+}
+
+.project-list__item p {
+  font-family: "Inria Serif", serif;
+  color: #485F2F;
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+.upcoming-label {
+  margin-bottom: 0.15rem;
+  font-family: "Inter", sans-serif;
+  color: #936227;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.project-list__item--upcoming .project-title {
+  font-family: "Cormorant Garamond", serif;
+  color: #02110B;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.my_traits {
+  margin-top: 1.5rem;
+  font-family: "Cormorant Garamond", serif;
+  color: #485F2F;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.about_link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-family: "Cormorant Garamond", serif;
+  color: #02110B;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: opacity 0.3s ease, gap 0.3s ease;
+}
+
+.about_link:hover {
+  opacity: 0.6;
+  gap: 0.7rem;
+}
+
+.water-drop {
+  position: absolute;
+  z-index: 4;
+}
+
+.water-drop--one {
+  width: 4rem;
+  left: 42%;
+  top: 18%;
+}
+
+.water-drop--two {
+  width: 3.5rem;
+  right: 42%;
+  top: 18%;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  line-height: 1.4;
+}
+
+.site-footer nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-footer a {
+  transition: opacity 0.3s ease;
+  color: #F9A742;
+  font-size: 0.8rem;
+}
+
+.site-footer a:hover {
+  opacity: 0.6;
+}
+
+.magnifier {
+  position: absolute;
+  width: 12rem;
+  left: 8%;
+  bottom: 12%;
+  z-index: 4;
+}
+
+.magnifier_visual {
+  width: 100%;
+  height: auto;
 }/*# sourceMappingURL=style.css.map */

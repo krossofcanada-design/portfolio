@@ -51,7 +51,532 @@ button {
 
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
 
     padding: 2rem 3rem;
+}
+
+// =========================================
+// LOGO
+// =========================================
+
+.logo_link {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo_title {
+    font-family: variables.$font-body;
+    color: variables.$color-accent;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.logo_philosophy {
+    margin-top: 0.2rem;
+
+    font-family: variables.$font-body;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+// =========================================
+// MENU TOGGLE
+// =========================================
+
+.menu_toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 2rem;
+    height: 1.5rem;
+
+    padding: 0;
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.menu_toggle span {
+    display: block;
+
+    width: 100%;
+    height: 1px;
+
+    background-color: variables.$color-accent;
+
+    transition: transform 0.3s ease,
+                opacity 0.3s ease;
+}
+
+// =========================================
+// NAVIGATION MENU
+// =========================================
+
+.menu {
+    display: none;
+
+    position: absolute;
+    top: 3.5rem;
+    right: 0;
+
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+
+    min-width: 10rem;
+
+    padding: 1.5rem;
+
+    font-family: variables.$font-fig;
+    font-size: 0.8rem;
+}
+
+// =========================================
+// MENU LINKS
+// =========================================
+
+.menu a,
+.projects-toggle {
+    color: variables.$color-accent;
+
+    font-family: variables.$font-body;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+
+    background: none;
+    border: 0;
+
+    cursor: pointer;
+}
+
+.menu a:hover,
+.projects-toggle:hover {
+    opacity: 0.6;
+}
+
+// =========================================
+// PROJECT LINKS
+// =========================================
+
+.project_links {
+    display: none;
+    color: variables.$color-text;
+
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+
+    padding-right: 1rem;
+}
+
+.project_links a {
+    font-size: 0.7rem;
+}
+
+// =========================================
+// SPATIAL SCENE
+// =========================================
+
+.scene {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+// =========================================
+// HERO
+// =========================================
+
+.hero {
+    position: relative;
+
+    min-height: calc(100vh - 6rem);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// =========================================
+// HERO CONTENT
+// =========================================
+
+.hero_content {
+    width: min(90%, 42rem);
+
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: variables.$font-body;
+
+    color: variables.$color-accent;
+
+    font-size: clamp(3rem, 5vw, 7rem);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+}
+
+.hero_philosophy {
+    margin: 2rem auto;
+
+    max-width: 32rem;
+
+    font-family: variables.$font-body;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.hero_target {
+    max-width: 34rem;
+    margin: 2rem auto;
+
+    font-family: variables.$font-body;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+// =========================================
+// HERO RULES
+// =========================================
+
+.hero_rule {
+    width: 7rem;
+    height: 1px;
+
+    margin: 1.5rem auto;
+
+    background-color: variables.$color-accent;
+}
+
+// =========================================
+// HERO CTA
+// =========================================
+
+.hero_cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    margin-top: 2rem;
+
+    font-family: variables.$font-body;
+    color: variables.$color-accent;
+    font-size: 1.2rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    transition: gap 0.3s ease,
+                opacity 0.3s ease;
+
+}
+
+.hero_cta:hover {
+    gap: 0.4rem;
+}
+
+// =========================================
+// FLOWER
+// =========================================
+
+.flower {
+    position: absolute;
+
+    width: 18rem;
+
+    top: 12%;
+    right: 8%;
+
+    z-index: 2;
+}
+
+.flower img {
+    width: 100%;
+    height: auto;
+}
+
+// =========================================
+// FLOWER CAPTION
+// =========================================
+
+.hero_caption {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 0.75rem;
+
+    font-family: variables.$font-fig;
+    font-size: 0.65rem;
+    line-height: 1.4;
+
+    color: variables.$color-text;
+}
+
+.hero_caption strong {
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.caption_species {
+    margin-top: 0.15rem;
+}
+
+.caption_description {
+    max-width: 16rem;
+
+    margin-top: 0.4rem;
+
+    font-size: 0.6rem;
+    line-height: 1.5;
+}
+
+// =========================================
+// NOTEBOOK
+// =========================================
+
+.book {
+    position: absolute;
+
+    width: 42rem;
+
+    left: 50%;
+    bottom: 5%;
+
+    transform: translateX(-50%);
+
+    z-index: 3;
+}
+
+.book_image {
+    width: 100%;
+    height: auto;
+}
+
+// =========================================
+// NOTEBOOK PAGES
+// =========================================
+
+.book_page {
+    position: absolute;
+
+    top: 12%;
+    width: 35%;
+
+    font-family: variables.$font-notebook;
+    color: variables.$color-text;
+}
+
+.book_page-left {
+    left: 9%;
+}
+
+.book_page-right {
+    right: 9%;
+}
+
+
+// =========================================
+// PROJECTS PAGE
+// =========================================
+
+.book_page h2 {
+    font-family: variables.$font-notebook;
+    color: variables.$color-background;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.18em;
+}
+
+.page_rule {
+    width: 4rem;
+    height: 1px;
+
+    margin: 0.75rem 0;
+
+    background-color: variables.$color-project;
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    margin-top: 1.25rem;
+
+    list-style: none;
+}
+
+.project-list__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.project-list__item a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+
+    font-family: variables.$font-notebook;
+    color: variables.$color-background;
+    font-size: 1.15rem;
+    font-weight: 600;
+
+    transition: opacity 0.3s ease,
+                gap 0.3s ease;
+}
+
+.project-list__item a:hover {
+    opacity: 0.6;
+    gap: 0.7rem;
+}
+
+.project-list__item p {
+    font-family: variables.$font-body;
+    color: variables.$color-sage;
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.3;
+}
+
+.upcoming-label {
+    margin-bottom: 0.15rem;
+
+    font-family: variables.$font-fig;
+    color: variables.$color-project;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    opacity: 0.7;
+}
+
+.project-list__item--upcoming .project-title {
+    font-family: variables.$font-notebook;
+    color: variables.$color-background;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+
+// =========================================
+// ABOUT PAGE
+// =========================================
+
+.my_traits {
+    margin-top: 1.5rem;
+
+    font-family: variables.$font-notebook;
+    color: variables.$color-sage;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.about_link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+
+    margin-top: 1.5rem;
+
+    font-family: variables.$font-notebook;
+    color: variables.$color-background;
+    font-size: 1rem;
+    font-weight: 600;
+
+    transition: opacity 0.3s ease,
+                gap 0.3s ease;
+}
+
+.about_link:hover {
+    opacity: 0.6;
+    gap: 0.7rem;
+}
+
+// =========================================
+// WATER DROPS
+// =========================================
+
+.water-drop {
+    position: absolute;
+
+    z-index: 4;
+}
+
+.water-drop--one {
+    width: 4rem;
+
+    left: 42%;
+    top: 18%;
+}
+
+.water-drop--two {
+    width: 3.5rem;
+
+    right: 42%;
+    top: 18%;
+}
+
+// =========================================
+// FOOTER
+// =========================================
+
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1.5rem 3rem;
+
+    font-family: variables.$font-fig;
+    font-size: 0.65rem;
+    line-height: 1.4;
+}
+
+.site-footer nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.site-footer a {
+    transition: opacity 0.3s ease;
+    color: variables.$color-accent;
+    font-size: 0.8rem;
+}
+
+.site-footer a:hover {
+    opacity: 0.6;
+}
+
+// =========================================
+// MAGNIFYING GLASS
+// =========================================
+
+.magnifier {
+    position: absolute;
+
+    width: 12rem;
+
+    left: 8%;
+    bottom: 12%;
+
+    z-index: 4;
+}
+
+.magnifier_visual {
+    width: 100%;
+    height: auto;
 }
