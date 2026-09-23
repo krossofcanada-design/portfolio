@@ -1,119 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klaudia Ross - Portfolio</title>
 
+    <title>Klaudia Ross — Digital Designer</title>
+
+    <meta
+        name="description"
+        content="Klaudia Ross is a digital designer working with organizations and research-driven teams to understand people, explore problems, and shape complex ideas into purposeful digital experiences."
+    >
+
+    <!-- Styles -->
     <link rel="stylesheet" href="src/SCSS/style.css">
+
+    <!-- JavaScript -->
     <script src="src/js/main.js" defer></script>
+
+    <!-- Fonts -->
 
     <!-- Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet"
+    >
 
     <!-- Inria Serif -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+        rel="stylesheet"
+    >
 
     <!-- Cormorant Garamond -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-
-    <!-- Libertinus Serif-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libertinus+Serif+Display&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap"
+        rel="stylesheet"
+    >
 
 
 </head>
 
+
 <body>
-    <header>
-        <div class="logo" >
-            <p class="logo_title" >Klaudia Ross</p>
-            <p class="logo_philosophy" >Connection-Centered Digital Design</p>
+
+    <!-- =========================================
+         SITE HEADER
+         ========================================= -->
+
+    <header class="site-header">
+
+        <div class="logo">
+
+            <a href="index.html" class="logo_link">
+
+                <p class="logo_title">
+                    Klaudia Ross
+                </p>
+
+                <p class="logo_philosophy">
+                    Connection-Centered Digital Design
+                </p>
+
+            </a>
+
         </div>
 
-        <nav>
-            <button class="menu_toggle" aria-label="Open menu">
+
+        <nav class="site-nav" aria-label="Main navigation">
+
+            <button
+                class="menu_toggle"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <div class="menu">
-                <a href="index.html">Home</a>
-                <a href="about.html">About & Approach</a>
 
-                <button class="projects-toggle">Projects</button>
+            <div class="menu">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+
+                <button
+                    class="projects-toggle"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    Projects
+                </button>
+
 
                 <div class="project_links">
-                    <a href="Projects/kystnaer.html">Kystnær</a>
-                    <a href="Projects/geografisk-have.html">Geografisk Have</a>
-                    <a href="Projects/carol-christina.html">Carol Christina</a>
+
+                    <a href="Projects/kystnaer.html">
+                        Kystnær
+                    </a>
+
+                    <a href="Projects/geografisk-have.html">
+                        Geografisk Have
+                    </a>
+
+                    <a href="Projects/carol-christina.html">
+                        Carol Christina
+                    </a>
+
                 </div>
 
-                <a href="mailto:krossofcanada@gmail.com">Contact</a>
+
+                <a href="about.html">
+                    About &amp; Approach
+                </a>
+
+                <a href="mailto:krossofcanada@gmail.com">
+                    Contact
+                </a>
+
             </div>
+
         </nav>
 
     </header>
 
-    <main>
-        <section class="hero" >
-            <div class="hero_content" >
-                <h1>Digital Designer</h1>
-                <p class="hero_philosophy" >Good design is informed and shaped by the environment it lives in.</p>
-                <p class="hero_target" >I work with organizations and research-driven teams to understand people, explore problems, and shape complex ideas into purposeful digital experiences.</p>
-                <a hero_cta href="mailto:krossofcanada@gmail.com">Connect with me -></a>
+
+
+    <!-- =========================================
+         SPATIAL SCENE
+         ========================================= -->
+
+    <main class="scene">
+
+
+        <!-- =====================================
+             BACKGROUND / ENVIRONMENT
+             ===================================== -->
+
+        <div class="scene_background" aria-hidden="true"></div>
+
+
+        <!-- =====================================
+             ORBITAL / CIRCULAR ELEMENTS
+             ===================================== -->
+
+        <div class="scene_circles" aria-hidden="true">
+
+            <div class="circle circle--one"></div>
+
+            <div class="circle circle--two"></div>
+
+            <div class="circle circle--three"></div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             HERO CONTENT
+             ===================================== -->
+
+        <section class="hero" aria-labelledby="hero-title">
+
+
+            <div class="hero_content">
+
+                <h1 id="hero-title">
+                    Digital Designer
+                </h1>
+
+
+                <div class="hero_rule" aria-hidden="true"></div>
+
+
+                <p class="hero_philosophy">
+                    Good design is informed and shaped by the environment it lives in.
+                </p>
+
+
+                <div class="hero_rule" aria-hidden="true"></div>
+
+
+                <p class="hero_target">
+                    I work with organizations and research-driven teams to understand
+                    people, explore problems, and shape complex ideas into purposeful
+                    digital experiences.
+                </p>
+
+
+                <div class="hero_rule" aria-hidden="true"></div>
+
+
+                <a
+                    class="hero_cta"
+                    href="mailto:krossofcanada@gmail.com"
+                >
+                    Connect with me
+                    <span aria-hidden="true">→</span>
+                </a>
+
             </div>
 
-            <figure>
-                <img src="img/Main/Flower.png" alt="Diphylleia grayi skeleton flowers">
+
+
+            <!-- =================================
+                 FLOWER OBJECT
+                 ================================= -->
+
+            <figure class="flower">
+
+                <img
+                    src="img/Main/Flower.png"
+                    alt="Diphylleia grayi skeleton flowers"
+                >
+
+
                 <figcaption class="hero_caption">
-                    <strong>Fig. 01</strong><br>
-                    <em>Diphylleia grayi</em><br>
-                    The delicate white petals become transparent upon interaction with water.
+
+                    <strong>Fig. 01</strong>
+
+                    <span class="caption_species">
+                        <em>Diphylleia grayi</em>
+                    </span>
+
+                    <span class="caption_description">
+                        The delicate white petals become transparent upon interaction
+                        with water.
+                    </span>
+
                 </figcaption>
+
             </figure>
+
         </section>
 
-        <section class="book" aria-label="Projects and about">
-            
-            <div class="book_page-left">
-                <h2>Projects</h2>
+
+
+        <!-- =====================================
+             NOTEBOOK / PROJECT OBJECT
+             ===================================== -->
+
+        <section
+            class="book"
+            aria-label="Projects and about"
+        >
+
+
+            <!-- Physical notebook -->
+
+            <img
+                class="book_image"
+                src="img/Main/Notebook.png"
+                alt=""
+                aria-hidden="true"
+            >
+
+
+
+            <!-- =================================
+                 LEFT PAGE
+                 ================================= -->
+
+            <div class="book_page book_page-left">
+
+                <h2>
+                    Projects
+                </h2>
+
+
+                <div class="page_rule" aria-hidden="true"></div>
+
+
                 <ul class="project-list">
-                <li><a href="Projects/kystnaer.html">Kystnær →</a><p>A research-led product repositioning</p></li>
-                <li><a href="Projects/geografisk-have.html">Geografisk Have →</a><p>A shared identity for many audiences</p></li>
-                <li><a href="Projects/carol-christina.html">Carol Christina →</a><p>Creating trust on a website </p></li>
 
-                <!-- No link, just a teaser for an upcoming project -->
-                <li class="project-list__item--upcoming"><span>Upcoming</span>
-                    <p>CoTinker Lab</p><p>Participatory Design in education</p></li>
+
+                    <li class="project-list__item">
+
+                        <a href="Projects/kystnaer.html">
+                            Kystnær
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                        <p>
+                            A research-led product repositioning
+                        </p>
+
+                    </li>
+
+
+                    <li class="project-list__item">
+
+                        <a href="Projects/geografisk-have.html">
+                            Geografisk Have
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                        <p>
+                            A shared identity for many audiences
+                        </p>
+
+                    </li>
+
+
+                    <li class="project-list__item">
+
+                        <a href="Projects/carol-christina.html">
+                            Carol Christina
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                        <p>
+                            Creating trust on a website
+                        </p>
+
+                    </li>
+
+
+                    <!-- Upcoming project -->
+
+                    <li class="project-list__item project-list__item--upcoming">
+
+                        <span class="upcoming-label">
+                            Upcoming
+                        </span>
+
+                        <p class="project-title">
+                            CoTinker Lab
+                            <span aria-hidden="true">→</span>
+                        </p>
+
+                        <p>
+                            Participatory Design in education
+                        </p>
+
+                    </li>
+
                 </ul>
+
             </div>
 
-            <div class="book_page-right">
-                <h2>About &amp; Approach</h2>
-                <p class="my_traits">Curious by nature<br>Analytical by training<br>Creative by choice</p>
-                <a href="About.html">My approach and background →</a>
-            </div>
+            <!-- Decorative water droplet -->
 
-            <img src="img/Main/Notebook.png" alt="Notebook" aria-hidden="true">
+            <img
+                class="water-drop water-drop--one"
+                src="img/Main/Droplet1.svg"
+                alt=""
+                aria-hidden="true"
+            >
+
+
+
+            <!-- =================================
+                 RIGHT PAGE
+                 ================================= -->
+
+            <div class="book_page book_page-right">
+
+                <h2>
+                    About &amp;<br>
+                    Approach
+                </h2>
+
+                <img
+                class="water-drop water-drop--two"
+                src="img/Main/Droplet2.svg"
+                alt=""
+                aria-hidden="true"
+                >
+
+                <div class="page_rule" aria-hidden="true"></div>
+
+
+                <p class="my_traits">
+
+                    Curious by nature<br>
+
+                    Analytical by training<br>
+
+                    Creative by choice
+
+                </p>
+
+
+                <a
+                    class="about_link"
+                    href="about.html"
+                >
+                    My approach and background
+                    <span aria-hidden="true">→</span>
+                </a>
+
+            </div>
 
         </section>
+
+
+
+        <!-- =====================================
+             MAGNIFYING GLASS
+             ===================================== -->
+
+        <div
+            class="magnifier"
+            aria-hidden="true"
+        >
+
+            <div class="magnifier_lens"></div>
+
+            <img
+                class="magnifier_visual"
+                src="img/Main/MagnifyingGlass.svg"
+                alt=""
+            >
+
+        </div>
+
+
     </main>
 
-    <footer class="site-footer">
-        <p>©2026 Klaudia Ross</p>
-        <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="mailto:krossofcanada@gmail.com">Contact</a></nav>
-    </footer>
 
-    <div class="magnifier" aria-hidden="true"></div>
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="site-footer">
+
+        <p>
+            ©2026 Klaudia Ross
+        </p>
+
+
+        <nav aria-label="Footer navigation">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <span aria-hidden="true">|</span>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <span aria-hidden="true">|</span>
+
+            <a href="mailto:krossofcanada@gmail.com">
+                Contact
+            </a>
+
+        </nav>
+
+    </footer>
 
 </body>
 

@@ -1,39 +1,6 @@
 @use "variables";
-@use "nav";
-@use "overlay";
-@use "fonts";
 @use "pages";
 @use "projects";
-
-
-//FONTS
-$font-fig: "Inter", sans-serif;
-$font-body: "Inria Serif", serif;
-$font-display: "Libertinus Serif Display", serif;
-$font-accent: "Cormorant Garamond", serif;
-
-
-//GLOBAL
-body {
-  margin: 0;
-  font-family: $font-body;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #fff;
-}
-
-h1 {
-  font-family: $font-body;
-  color: #F9A742;
-}
-
-h2,
-h3 {
-  font-family: $font-accent;
-  color: #333;
-}
-
-
 
 
 

@@ -1,31 +1,39 @@
-body {
-  min-height: 100vh;
-  background-color: #02110B;
-}
-
-.project-card {
-  min-height: 400px;
-  background-image: url("../assets/img/Projects/paper.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  background-color: #02110B;
+  color: #ffffff;
   font-family: "Inria Serif", serif;
-  font-size: 1rem;
   line-height: 1.5;
-  color: #fff;
 }
 
-h1 {
-  font-family: "Inria Serif", serif;
-  color: #F9A742;
+img {
+  display: block;
+  max-width: 100%;
 }
 
-h2,
-h3 {
-  font-family: "Cormorant Garamond", serif;
-  color: #333;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.site-header {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem 3rem;
 }/*# sourceMappingURL=style.css.map */
