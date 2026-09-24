@@ -30,11 +30,16 @@ button {
 }
 
 .site-header {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 100;
   display: flex;
   justify-content: space-between;
-  padding: 2rem 3rem;
+  align-items: flex-start;
+  padding: 2rem 3.5rem;
+  background: transparent;
 }
 
 .logo_link {
@@ -45,17 +50,17 @@ button {
 .logo_title {
   font-family: "Inria Serif", serif;
   color: #F9A742;
-  font-size: 2rem;
+  font-size: 1.55rem;
   font-weight: 500;
   letter-spacing: 0.01em;
 }
 
 .logo_philosophy {
-  margin-top: 0.2rem;
-  font-family: "Inria Serif", serif;
-  font-size: 1rem;
+  margin-top: 0.15rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
@@ -129,17 +134,33 @@ button {
   overflow: hidden;
 }
 
+.scene_circles {
+  position: absolute;
+  width: clamp(18rem, 58vw, 58rem);
+  top: -5rem;
+  right: -2rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.scene_circles img {
+  width: 100%;
+  height: auto;
+}
+
 .hero {
   position: relative;
-  min-height: calc(100vh - 6rem);
+  height: clamp(42rem, 85vh, 52rem);
+  padding-top: 10rem;
+  padding-left: 5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .hero_content {
   width: min(90%, 42rem);
-  text-align: center;
+  text-align: left;
 }
 
 .hero h1 {
@@ -148,12 +169,12 @@ button {
   font-size: clamp(3rem, 5vw, 7rem);
   font-weight: 400;
   line-height: 0.95;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .hero_philosophy {
-  margin: 2rem auto;
-  max-width: 32rem;
+  margin: 0;
+  max-width: 17rem;
   font-family: "Inria Serif", serif;
   font-size: clamp(1.25rem, 2vw, 1.75rem);
   font-weight: 400;
@@ -161,8 +182,8 @@ button {
 }
 
 .hero_target {
-  max-width: 34rem;
-  margin: 2rem auto;
+  max-width: 17rem;
+  margin: 0;
   font-family: "Inria Serif", serif;
   font-size: 1rem;
   line-height: 1.6;
@@ -171,7 +192,7 @@ button {
 .hero_rule {
   width: 7rem;
   height: 1px;
-  margin: 1.5rem auto;
+  margin: 2rem 0;
   background-color: #F9A742;
 }
 
@@ -179,7 +200,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-family: "Inria Serif", serif;
   color: #F9A742;
   font-size: 1.2rem;
@@ -194,10 +215,10 @@ button {
 
 .flower {
   position: absolute;
-  width: 18rem;
-  top: 12%;
-  right: 8%;
-  z-index: 2;
+  width: clamp(10rem, 68vw, 58rem);
+  top: -5rem;
+  right: -2rem;
+  z-index: 4;
 }
 
 .flower img {
@@ -206,11 +227,15 @@ button {
 }
 
 .hero_caption {
+  position: absolute;
+  top: 30%;
+  right: 10%;
+  width: clamp(7rem, 12vw, 12rem);
   display: flex;
   flex-direction: column;
-  margin-top: 0.75rem;
+  margin: 0;
   font-family: "Inter", sans-serif;
-  font-size: 0.65rem;
+  font-size: clamp(0.55rem, 0.7vw, 0.65rem);
   line-height: 1.4;
   color: #ffffff;
 }
@@ -225,18 +250,17 @@ button {
 }
 
 .caption_description {
-  max-width: 16rem;
+  width: 100%;
+  max-width: none;
   margin-top: 0.4rem;
   font-size: 0.6rem;
   line-height: 1.5;
 }
 
 .book {
-  position: absolute;
-  width: 42rem;
-  left: 50%;
-  bottom: 5%;
-  transform: translateX(-50%);
+  position: relative;
+  width: min(62rem, 80vw);
+  margin: 6rem auto 0;
   z-index: 3;
 }
 
@@ -247,10 +271,11 @@ button {
 
 .book_page {
   position: absolute;
-  top: 12%;
+  top: 22%;
   width: 35%;
   font-family: "Cormorant Garamond", serif;
   color: #ffffff;
+  text-align: center;
 }
 
 .book_page-left {
@@ -259,67 +284,72 @@ button {
 
 .book_page-right {
   right: 9%;
+  margin-top: 3rem;
 }
 
 .book_page h2 {
   font-family: "Cormorant Garamond", serif;
   color: #02110B;
-  font-size: 2rem;
+  font-size: clamp(1rem, 3vw, 2rem);
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.18em;
 }
 
 .page_rule {
-  width: 4rem;
+  width: clamp(2.5rem, 7vw, 5rem);
   height: 1px;
-  margin: 0.75rem 0;
+  margin: 1.75rem auto;
   background-color: #936227;
 }
 
 .project-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  margin-top: 1.25rem;
+  align-items: center;
+  gap: clamp(0.5rem, 1.5vw, 1.25rem);
+  margin-top: clamp(0.75rem, 1.5vw, 1.25rem);
   list-style: none;
 }
 
 .project-list__item {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.15rem;
 }
 
 .project-list__item a {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: clamp(0.25rem, 0.7vw, 0.5rem);
   font-family: "Cormorant Garamond", serif;
   color: #02110B;
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
   font-weight: 600;
   transition: opacity 0.3s ease, gap 0.3s ease;
 }
 
 .project-list__item a:hover {
   opacity: 0.6;
-  gap: 0.7rem;
+  gap: 0.8rem;
 }
 
 .project-list__item p {
   font-family: "Inria Serif", serif;
   color: #485F2F;
-  font-size: 0.85rem;
+  font-size: clamp(0.65rem, 1.2vw, 1rem);
   font-weight: 300;
   line-height: 1.3;
 }
 
 .upcoming-label {
+  margin-top: 1rem;
   margin-bottom: 0.15rem;
   font-family: "Inter", sans-serif;
   color: #936227;
-  font-size: 0.55rem;
+  font-size: clamp(0.4rem, 0.8vw, 0.55rem);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -329,7 +359,7 @@ button {
 .project-list__item--upcoming .project-title {
   font-family: "Cormorant Garamond", serif;
   color: #02110B;
-  font-size: 1.15rem;
+  font-size: clamp(0.7rem, 1.8vw, 1.15rem);
   font-weight: 600;
 }
 
@@ -365,15 +395,29 @@ button {
 }
 
 .water-drop--one {
-  width: 4rem;
-  left: 42%;
-  top: 18%;
+  width: clamp(1rem, 2.5vw, 2rem);
+  left: clamp(5%, 12vw, 12%);
+  top: 78%;
 }
 
 .water-drop--two {
-  width: 3.5rem;
-  right: 42%;
+  width: clamp(1.75rem, 4vw, 3.5rem);
+  right: clamp(25%, 42vw, 42%);
   top: 18%;
+}
+
+.scene_bottom_circles {
+  position: absolute;
+  width: clamp(18rem, 38vw, 38rem);
+  left: -3rem;
+  top: 75rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.scene_bottom_circles img {
+  width: 100%;
+  height: auto;
 }
 
 .site-footer {
@@ -404,13 +448,61 @@ button {
 
 .magnifier {
   position: absolute;
-  width: 12rem;
-  left: 8%;
-  bottom: 12%;
-  z-index: 4;
+  width: 20rem;
+  aspect-ratio: 1;
+  left: 50%;
+  bottom: 27%;
+  transform: translateX(-50%);
+  z-index: 5;
+  cursor: grab;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.magnifier:active {
+  cursor: grabbing;
+}
+
+.magnifier_lens {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 0 0.55rem rgba(255, 255, 255, 0.3), inset 0 0 1.5rem rgba(255, 255, 255, 0.08), 0 0 3rem rgba(16, 16, 16, 0.4);
+  pointer-events: none;
+}
+
+.magnified-scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+.magnifier_lens::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 27%, rgba(255, 255, 255, 0.18), transparent 18%), radial-gradient(circle at 50% 50%, transparent 55%, rgba(255, 255, 255, 0.08) 78%, rgba(255, 255, 255, 0.2) 100%);
+  box-shadow: inset 0 0 0.2rem rgba(255, 255, 255, 0.5), inset 0 0 1rem rgba(255, 255, 255, 0.08);
+  pointer-events: none;
 }
 
 .magnifier_visual {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
 }/*# sourceMappingURL=style.css.map */
