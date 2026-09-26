@@ -16,3 +16,25 @@ $color-sage: #485F2F;
 $font-fig: "Inter", sans-serif;
 $font-body: "Inria Serif", serif;
 $font-notebook: "Cormorant Garamond", serif;
+
+
+// =========================================
+// SHOWCASE COLORS
+// Separate shades preserve the current showcase design.
+// =========================================
+
+$color-paper: #f6f3eb;
+$color-ink: #25271f;
+$color-showcase-heading: #4e6439;
+$color-showcase-rule: #af7d45;
+$color-showcase-reflection: #98632c;
+$color-overlay-backdrop: rgb(1 10 6 / 72%);
+
+
+// =========================================
+// SHARED PAPER SURFACE
+// Paths resolve relative to compiled CSS in src/SCSS/.
+// =========================================
+
+$texture-paper: url("../../img/Projects/paper.jpg");
+$shadow-paper: 0 1.5rem 5rem rgb(0 0 0 / 30%);

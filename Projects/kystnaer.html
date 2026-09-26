@@ -3,37 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klaudia Ross - Showcase Kystnær</title>
-
-    <link rel="stylesheet" href="..src/SCSS/style.css">
-    <script src="..src/js/project.js" defer></script>
-
-
-        <!-- Inter -->
+    <title>Kystnær — A research-led product repositioning | Klaudia Ross</title>
+    <meta name="description" content="A Kystnær design case study by Klaudia Ross: connecting audience research, product positioning, information architecture, and web development.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-
-    <!-- Inria Serif -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-
-    <!-- Cormorant Garamond -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-
-    <!-- Libertinus Serif-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libertinus+Serif+Display&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/SCSS/projects.css">
 </head>
+<body class="project-page">
+    <main class="project-page__main">
+        <!-- This article is also the content loaded into the overlay. -->
+        <article class="showcase showcase--kystnaer" data-project-content aria-labelledby="kystnaer-title">
+            <a class="showcase__back" href="../index.html" aria-label="Back to portfolio">← Portfolio</a>
+            <img class="showcase__brand" src="../img/Projects/Kystnaer/KystnaerLogo.png" alt="" aria-hidden="true">
 
-<body>
+            <header class="showcase__header">
+                <h1 class="showcase__title" id="kystnaer-title">Kystnær</h1>
+                <p class="showcase__subtitle">A research-led product repositioning</p>
+            </header>
 
-    
+            <div class="showcase__overview">
+                <div class="showcase__question">
+                    <p>How might an existing product range become relevant to a new audience?</p>
+                    <p class="showcase__context">Kystnær wanted to reach men 35+ without creating an entirely new product.</p>
+                </div>
+                <figure class="showcase__intro-image">
+                    <img src="../img/Projects/Kystnaer/Gavesaet.png" alt="Kystnær shaving brush and soap products arranged on a tray">
+                </figure>
+                <section class="showcase__contribution" aria-labelledby="kystnaer-contribution">
+                    <h2 id="kystnaer-contribution">My Contribution</h2>
+                    <ul>
+                        <li>UX, Market, and Scientific Research</li>
+                        <li>Interviews &amp; User Testing</li>
+                        <li>Content &amp; Information Architecture</li>
+                        <li>Code &amp; Web Development</li>
+                    </ul>
+                </section>
+            </div>
+
+            <section class="showcase__section" aria-labelledby="kystnaer-evidence">
+                <h2 id="kystnaer-evidence">Following the Evidence</h2>
+                <p>Kystnær had a unique challenge. The product range was supposed to aim at a unisex audience, but the Kystnær brand identity had a very feminine expression.</p>
+                <p>Through interviews with the new target group, combined with research into men’s magazines, grooming habits and health-related content, one topic kept reappearing: <em class="showcase__emphasis">hair loss.</em></p>
+            </section>
+
+            <section class="showcase__section showcase__discovery" aria-labelledby="kystnaer-discovery">
+                <div>
+                    <h2 id="kystnaer-discovery">The Discovery</h2>
+                    <p>The research revealed something interesting: Kystnær already had a product that could speak directly to this concern — their <em class="showcase__emphasis">Rosemary</em> Shampoo and Conditioner Bars.</p>
+                </div>
+                <img class="showcase__botanical" src="../img/Projects/Kystnaer/Rosemary.png" alt="" aria-hidden="true" loading="lazy">
+            </section>
+
+            <section class="showcase__section" aria-labelledby="kystnaer-solution">
+                <h2 id="kystnaer-solution">The Solution</h2>
+                <div class="showcase__split">
+                    <div>
+                        <p>The final solution centred around the repositioning of the Rosemary bars, using <strong>science-backed information</strong> to explain how they could be incorporated into a hair-care routine.</p>
+                        <p>Furthermore, a dedicated men’s section provided focus on products relevant to the new audience and a place where they could be discovered as part of a consistent experience.</p>
+                    </div>
+                    <figure>
+                        <!-- CHECK FILENAME: the screenshot only shows “ShampooAndCond...” -->
+                        <img src="../img/Projects/Kystnaer/ShampooAndConditionerBars.png" alt="Kystnær rosemary shampoo and conditioner bars" loading="lazy">
+                    </figure>
+                </div>
+            </section>
+
+            <section class="showcase__section showcase__build" aria-labelledby="kystnaer-build">
+                <figure>
+                    <!-- CHECK FILENAME: the screenshot only shows “WebsiteShowcase...” -->
+                    <img src="../img/Projects/Kystnaer/WebsiteShowcase.png" alt="Kystnær website shown on a laptop and mobile phone" loading="lazy">
+                </figure>
+                <div>
+                    <h2 id="kystnaer-build">The Build</h2>
+                    <dl>
+                        <dt>Design</dt><dd>Information Architecture</dd>
+                        <dt>Development</dt><dd>Custom code for men’s section</dd>
+                        <dt>Evaluation</dt><dd>Usability Test with target group</dd>
+                    </dl>
+                </div>
+            </section>
+
+            <p class="showcase__reflection">What I found most rewarding about the project was following the evidence until the connection between the needs of the target group and what Kystnær had to offer became clear.</p>
+
+            <nav class="showcase__pagination" aria-label="Other projects">
+                <a href="carol-christina.html" data-project-link><span aria-hidden="true">←</span> Previous<span class="showcase__sr-only">: Carol Christina</span></a>
+                <a href="geografisk-have.html" data-project-link>Next<span class="showcase__sr-only">: Geografisk Have</span> <span aria-hidden="true">→</span></a>
+            </nav>
+        </article>
+    </main>
 </body>
-
 </html>

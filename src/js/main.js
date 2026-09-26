@@ -5,3 +5,9 @@ initMagnifyingGlass();
 import { initMenu } from "./components/Menu.js";
 
 initMenu();
+
+import { ProjectOverlay } from "./components/ProjectOverlay.js";
+
+// One shared instance handles the notebook, menu, and next/previous links.
+const projectOverlay = new ProjectOverlay();
+projectOverlay.init();
