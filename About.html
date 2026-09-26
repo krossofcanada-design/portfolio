@@ -1,36 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klaudia Ross - About & Approach</title>
 
-    <link rel="stylesheet" href="src/SCSS/style.css">
-    <script src="src/js/main.js" defer></script>
+    <head>
 
-        <!-- Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="About Klaudia Ross and her connection-centered approach to digital design, informed by academic research, UI/UX design, and classical drawing.">
 
-    <!-- Inria Serif -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+        <title>About &amp; Approach — Klaudia Ross</title>
 
-    <!-- Cormorant Garamond -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="src/SCSS/style.css">
 
-    <!-- Libertinus Serif-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libertinus+Serif+Display&display=swap" rel="stylesheet">
+        <script type="module" src="src/js/main.js"></script>
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
 
-</head>
-<body>
-    
-</body>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body class="about-page">
+
+        <div class="page-surface">
+
+            <header class="site-header">
+
+                <div class="logo">
+                    <a class="logo_link" href="index.html">
+                        <p class="logo_title">Klaudia Ross</p>
+                        <p class="logo_philosophy">Connection-Centered Digital Design</p>
+                    </a>
+                </div>
+
+                <nav class="site-nav" aria-label="Main navigation">
+
+                    <button class="menu_toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+                        <span></span><span></span><span></span>
+                    </button>
+
+                    <div class="menu" id="site-menu" hidden>
+
+                        <a href="index.html">Home</a>
+
+                        <button class="projects-toggle" type="button" aria-expanded="false" aria-controls="project-links">Projects</button>
+
+                        <div class="project_links" id="project-links" hidden>
+                            <a href="Projects/kystnaer.html">Kystnær</a>
+                            <a href="Projects/geografisk-have.html">Geografisk Have</a>
+                            <a href="Projects/carol-christina.html">Carol Christina</a>
+                        </div>
+
+                        <a href="about.html" aria-current="page">About &amp; Approach</a>
+
+                        <a href="mailto:krossofcanada@gmail.com">Contact</a>
+
+                    </div>
+
+                </nav>
+
+            </header>
+
+            <main class="about-main">
+
+                <section class="about-intro" aria-labelledby="about-title">
+
+                    <figure class="about-pine">
+                        <img src="img/About/Pine.png" alt="Light micrograph of a cross-section of a young pine twig, with its figure caption">
+                    </figure>
+
+                    <div class="about-intro__text">
+                        <h1 id="about-title">About &amp; Approach</h1>
+                        <p>Inspired by years of bio-lab research, I have come to admire the intelligence of nature’s design.</p>
+                        <p>Like a cell perfectly tuned not only to its internal mechanisms and its neighbouring cells, but also to the signals of a wider body that interacts with its surrounding world, a good digital experience is not simply a well-made interface. It is shaped by and adaptable to the people who use it, the context in which they encounter it, the systems around it, and the purpose it is meant to serve.</p>
+                        <p class="about-intro__thought">Good design is adaptable<br>to the environment it<br>lives in.</p>
+                    </div>
+
+                </section>
+
+                <section class="about-foundations" aria-label="What shapes my approach">
+
+                    <div class="about-foundation">
+                        <h2>Academic Research</h2>
+                        <p>Academic research shaped my curiosity, taught me to ask the right questions, and provided me with the framework through which to analyze results.</p>
+                    </div>
+
+                    <div class="about-foundation">
+                        <h2>UI/UX Design</h2>
+                        <p>Design thinking channeled my creativity and gave me the methods and constraints to turn ideas into prototypes — and to involve people in shaping the outcome.</p>
+                    </div>
+
+                    <div class="about-foundation">
+                        <h2>Classical Drawing</h2>
+                        <p>Classical drawing challenged me to confront prior mental constructs and learn to see again, focusing on what is actually there.</p>
+                    </div>
+
+                </section>
+
+                <section class="about-approach" aria-labelledby="approach-title">
+
+                    <div class="about-approach__copy">
+                        <p class="about-approach__lead">My approach draws upon all three facets above: beginning with a deconstruction of preconceptions, it gives space for the research and people, discovering the organic connections needed to create something meaningful and practical.</p>
+                        <h2 id="approach-title">Connection-Centered Digital Design</h2>
+                        <p class="about-approach__closing">Connection-centered digital design begins with investigating the relationships within the ecosystem of people, needs, systems, behaviours, and expectations that surround the project.</p>
+                        <p class="about-approach__closing">The goal is not simply to make an interface work, but to create the right connections so that the resulting experience has a meaningful place and a practical application within the world it serves.</p>
+                    </div>
+
+                    <div class="about-statue" aria-hidden="true">
+                        <img src="img/About/GreekStatue.png" alt="">
+                    </div>
+
+                </section>
+
+            </main>
+
+            <footer class="site-footer">
+
+                <p>©2026 Klaudia Ross</p>
+
+                <nav aria-label="Footer navigation">
+                    <a href="index.html">Home</a>
+                    <span aria-hidden="true">|</span>
+                    <a href="about.html" aria-current="page">About</a>
+                    <span aria-hidden="true">|</span>
+                    <a href="mailto:krossofcanada@gmail.com">Contact</a>
+                </nav>
+
+            </footer>
+
+            <div class="magnifier" role="button" tabindex="0" aria-label="Magnifying glass. Drag or use arrow keys to explore the page. Press Home to reset.">
+                <div class="magnifier_lens"></div>
+                <img class="magnifier_visual" src="img/Main/MagnifyingGlass.svg" alt="">
+            </div>
+
+        </div>
+
+    </body>
+
 </html>

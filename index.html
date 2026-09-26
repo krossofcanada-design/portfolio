@@ -76,11 +76,11 @@
 
 
         <nav class="site-nav" aria-label="Main navigation">
-
             <button
                 class="menu_toggle"
                 type="button"
                 aria-label="Open menu"
+                aria-controls="main-menu"
                 aria-expanded="false"
             >
                 <span></span>
@@ -88,50 +88,28 @@
                 <span></span>
             </button>
 
-
-            <div class="menu">
-
-                <a href="index.html">
-                    Home
-                </a>
-
+            <div class="menu" id="main-menu" hidden>
+                <a href="index.html">Home</a>
 
                 <button
                     class="projects-toggle"
                     type="button"
+                    aria-controls="project-links"
                     aria-expanded="false"
                 >
                     Projects
                 </button>
 
-
-                <div class="project_links">
-
-                    <a href="Projects/kystnaer.html">
-                        Kystnær
-                    </a>
-
-                    <a href="Projects/geografisk-have.html">
-                        Geografisk Have
-                    </a>
-
-                    <a href="Projects/carol-christina.html">
-                        Carol Christina
-                    </a>
-
+                <div class="project_links" id="project-links">
+                    <a href="Projects/kystnaer.html">Kystnær</a>
+                    <a href="Projects/geografisk-have.html">Geografisk Have</a>
+                    <a href="Projects/carol-christina.html">Carol Christina</a>
+                    <span>CoTinker Lab</span>
                 </div>
 
-
-                <a href="about.html">
-                    About &amp; Approach
-                </a>
-
-                <a href="mailto:krossofcanada@gmail.com">
-                    Contact
-                </a>
-
+                <a href="about.html">About &amp; Approach</a>
+                <a href="mailto:krossofcanada@gmail.com">Connect</a>
             </div>
-
         </nav>
 
     </header>
@@ -221,22 +199,6 @@
                     src="img/Main/Flower.png"
                     alt="Diphylleia grayi skeleton flowers"
                 >
-
-
-                <figcaption class="hero_caption">
-
-                    <strong>Fig. 01</strong>
-
-                    <span class="caption_species">
-                        <em>Diphylleia grayi</em>
-                    </span>
-
-                    <span class="caption_description">
-                        The delicate white petals become transparent upon interaction
-                        with water.
-                    </span>
-
-                </figcaption>
 
             </figure>
 

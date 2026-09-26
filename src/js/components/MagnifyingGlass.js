@@ -250,6 +250,18 @@ export function initMagnifyingGlass() {
         document.fonts.ready.then(scheduleRefresh);
     }
 
+    // Show the drag hint once, then remove it on interaction.
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const hintTimer = window.setTimeout(() => {
+            if (!hasBeenDragged) magnifier.classList.add("magnifier--hint");
+        }, 1200);
+
+        magnifier.addEventListener("pointerdown", () => {
+            window.clearTimeout(hintTimer);
+            magnifier.classList.remove("magnifier--hint");
+        }, { once: true });
+    }
+
     refresh();
 }
 
