@@ -1,3 +1,8 @@
+/* I wanted the way I wrote the code to reflect the way I think about design: as a set of layers that work together. In Figma, I can create a group and adjust the layers inside of it while also ordering groups in layers of their own. I tried to bring that same thinking into CSS. The main index-groups can be seen in _variables.scss.
+
+For example, I used functions such as clamp() where an element could grow or shrink smoothly with the browser window. This let me define its behaviour in one place, instead of adding several media queries to change its size in steps. When a smooth adjustment was not enough and the layout needed to change, I put the media query next to the styles it affected. Clear headings make it easier to find and understand each part of the code.
+
+I also chose breakpoints by looking at where the design actually stopped working well. That meant the layout could respond to the space available, rather than changing only at conventional desktop, tablet, or mobile widths. */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -284,23 +289,145 @@ button {
   background-color: #F9A742;
 }
 
-.hero_cta {
+/* The initial design was sketched step by step in Figma. The first thought was to animate it in After Effects, export it as an svg file using Lottie, and then use JavaScript to trigger the animation. For the sake of curiosity, I sparred with the chatbot, and the answer was that with an effect this small, a light CSS animation would be easier. I uploaded my Figma sketch, index.html, and the _pages.scss to allow ChatGPT to show me what it would do. After a few adjustment prompts to change the center of the animated circle, timing, and smoothness of the animation, this is the result. */
+.connect-link {
+  --connect-duration: 1600ms;
+  --connect-gap: 0.65em;
+  --connect-icon-size: 1.25em;
+  --connect-travel: calc(
+      var(--connect-gap) + var(--connect-icon-size) / 2
+      - 0.175em - 0.15em
+  );
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-top: 1rem;
-  font-family: "Inria Serif", serif;
+  gap: var(--connect-gap);
   color: #F9A742;
-  font-size: 1.2rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transition: gap 0.3s ease, opacity 0.3s ease;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.3;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.connect-link__text {
+  position: relative;
+}
+.connect-link__icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--connect-icon-size);
+  height: var(--connect-icon-size);
+  flex-shrink: 0;
+  overflow: visible;
+}
+.connect-link__arrow {
+  display: block;
+  line-height: 1;
+  transform-origin: center;
+}
+.connect-link__sphere {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  width: 0.35em;
+  height: 0.35em;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.connect-link:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 0.4rem;
 }
 
-.hero_cta:hover {
-  gap: 0.4rem;
+@media (hover: hover) and (pointer: fine) {
+  .connect-link:hover .connect-link__arrow {
+    animation: connect-arrow var(--connect-duration) ease-in-out both;
+  }
+  .connect-link:hover .connect-link__sphere {
+    animation: connect-ring var(--connect-duration) linear both;
+  }
+}
+.connect-link:focus-visible .connect-link__arrow {
+  animation: connect-arrow var(--connect-duration) ease-in-out both;
+}
+.connect-link:focus-visible .connect-link__sphere {
+  animation: connect-ring var(--connect-duration) linear both;
 }
 
+@keyframes connect-arrow {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  16% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  84% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes connect-ring {
+  0% {
+    opacity: 0;
+    width: 0.35em;
+    height: 0.35em;
+    background-color: currentColor;
+    transform: translate(-50%, -50%);
+  }
+  16% {
+    opacity: 1;
+    width: 0.35em;
+    height: 0.35em;
+    background-color: currentColor;
+    transform: translate(-50%, -50%);
+    animation-timing-function: ease-in-out;
+  }
+  27% {
+    opacity: 1;
+    width: 0.35em;
+    height: 0.35em;
+    background-color: currentColor;
+    transform: translate(calc(-50% - var(--connect-travel)), -50%);
+  }
+  32% {
+    opacity: 1;
+    width: 0.35em;
+    height: 0.35em;
+    background-color: transparent;
+  }
+  60% {
+    opacity: 0.85;
+  }
+  88% {
+    opacity: 0;
+    width: 3.9em;
+    height: 3.9em;
+  }
+  100% {
+    opacity: 0;
+    width: 3.9em;
+    height: 3.9em;
+    background-color: transparent;
+    transform: translate(calc(-50% - var(--connect-travel)), -50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .connect-link__arrow,
+  .connect-link__sphere {
+    animation: none !important;
+  }
+}
 .flower {
   position: absolute;
   width: clamp(10rem, 68vw, 58rem);
@@ -331,7 +458,7 @@ button {
 .book {
   position: relative;
   width: min(62rem, 80vw);
-  margin: 3rem auto 0;
+  margin: 3rem auto 5rem;
   z-index: 3;
 }
 
@@ -483,7 +610,7 @@ button {
   }
   .book {
     width: min(100% - 2rem, 36rem);
-    margin: 3rem auto 0;
+    margin: 3rem auto 4rem;
     padding-block: 5rem;
     background-image: url("../../img/Projects/paper.jpg");
     background-size: cover;
@@ -672,6 +799,97 @@ body > .page-surface {
   overflow: clip;
 }
 
+.hidden-discovery {
+  position: absolute;
+  z-index: 5;
+  width: 7rem;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.7rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: #0AFDF2;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-color: #02110B;
+  padding: 1rem;
+  border-radius: 50rem;
+  border: 0.3px solid #F9A742;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.hidden-discovery--one {
+  top: 47rem;
+  left: 30%;
+}
+.hidden-discovery--two {
+  top: 12rem;
+  left: 50%;
+}
+.hidden-discovery--three {
+  bottom: 1rem;
+  left: 46%;
+}
+
+.magnified-scene .hidden-discovery {
+  opacity: 1;
+}
+
+@media (max-width: 1240px) {
+  .hidden-discovery--one {
+    top: 41rem;
+    left: 42%;
+  }
+  .hidden-discovery--two {
+    top: 12rem;
+    right: 8%;
+  }
+  .hidden-discovery--three {
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 890px) {
+  .hidden-discovery {
+    width: 6rem;
+    padding: 0.35rem 0.45rem;
+  }
+  .hidden-discovery--one {
+    top: 40rem;
+    left: 47%;
+  }
+  .hidden-discovery--two {
+    top: 9rem;
+    right: 6%;
+  }
+  .hidden-discovery--three {
+    bottom: 1.5rem;
+  }
+}
+@media (max-width: 630px) {
+  .hidden-discovery {
+    width: 5.5rem;
+  }
+  .hidden-discovery--one {
+    top: 45rem;
+    left: 50%;
+  }
+  .hidden-discovery--two {
+    top: 8rem;
+    right: 5%;
+  }
+  .hidden-discovery--three {
+    bottom: 1rem;
+  }
+}
 .magnifier::before {
   content: "";
   position: absolute;
@@ -735,10 +953,6 @@ body > .page-surface {
     opacity: 0.8;
   }
 }
-body.menu-open .magnifier {
-  visibility: hidden;
-}
-
 .about-page .page-surface {
   min-height: 100vh;
 }
@@ -956,10 +1170,6 @@ body.menu-open .magnifier {
     margin-right: calc(-1 * (var(--about-edge) + 8vw));
   }
 }
-.about-page .site-header {
-  z-index: 300;
-}
-
 @media (min-width: 801px) {
   .about-page .magnifier {
     left: 38.2%;

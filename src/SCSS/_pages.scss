@@ -1,6 +1,17 @@
 @use "variables";
 
 
+// This scss file is connected to the index.html and about.html (and future contact.html) as they share a similar design.
+
+/* I wanted the way I wrote the code to reflect the way I think about design: as a set of layers that work together. In Figma, I can create a group and adjust the layers inside of it while also ordering groups in layers of their own. I tried to bring that same thinking into CSS. The main index-groups can be seen in _variables.scss.
+
+For example, I used functions such as clamp() where an element could grow or shrink smoothly with the browser window. This let me define its behaviour in one place, instead of adding several media queries to change its size in steps. When a smooth adjustment was not enough and the layout needed to change, I put the media query next to the styles it affected. Clear headings make it easier to find and understand each part of the code.
+
+I also chose breakpoints by looking at where the design actually stopped working well. That meant the layout could respond to the space available, rather than changing only at conventional desktop, tablet, or mobile widths. */
+
+
+
+
 // =========================================
 // RESET
 // =========================================
@@ -17,7 +28,7 @@
 
 html {
     font-size: 100%;
-    scrollbar-gutter: stable;
+    scrollbar-gutter: stable; //Prevents extra scrollbar to affect the layout
 }
 
 body {
@@ -52,7 +63,7 @@ button {
     left: 0;
 
     width: 100%;
-    z-index: 100;
+    z-index: variables.$layer-header;
 
     display: flex;
     justify-content: space-between;
@@ -279,7 +290,7 @@ button {
     top: -5rem;
     right: -2rem;
 
-    z-index: 1;
+    z-index: variables.$layer-decoration;
 
     pointer-events: none;
 }
@@ -364,29 +375,202 @@ button {
 }
 
 // =========================================
-// HERO CTA
+// CONNECT LINK — EXPANDING RING
+// This section was made with ChatGPT-6 Astra High
+/* The initial design was sketched step by step in Figma. The first thought was to animate it in After Effects, export it as an svg file using Lottie, and then use JavaScript to trigger the animation. For the sake of curiosity, I sparred with the chatbot, and the answer was that with an effect this small, a light CSS animation would be easier. I uploaded my Figma sketch, index.html, and the _pages.scss to allow ChatGPT to show me what it would do. After a few adjustment prompts to change the center of the animated circle, timing, and smoothness of the animation, this is the result. */
 // =========================================
 
-.hero_cta {
+.connect-link {
+    --connect-duration: #{variables.$connect-duration};
+    --connect-gap: 0.65em;
+    --connect-icon-size: 1.25em;
+
+    // Leave 0.15em between the solid dot and the text.
+    // 0.175em is half the dot's diameter.
+    --connect-travel: calc(
+        var(--connect-gap) + var(--connect-icon-size) / 2
+        - 0.175em - 0.15em
+    );
+
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: var(--connect-gap);
 
-    margin-top: 1rem;
-
-    font-family: variables.$font-body;
     color: variables.$color-accent;
-    font-size: 1.2rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font-size: variables.$connect-font-size;
+    line-height: 1.3;
+    text-decoration: none;
+    white-space: nowrap;
 
-    transition: gap 0.3s ease,
-                opacity 0.3s ease;
+    &__text {
+        position: relative;
+    }
 
+    &__icon {
+        position: relative;
+        display: grid;
+        place-items: center;
+
+        width: var(--connect-icon-size);
+        height: var(--connect-icon-size);
+        flex-shrink: 0;
+
+        overflow: visible;
+    }
+
+    &__arrow {
+        display: block;
+        line-height: 1;
+        transform-origin: center;
+    }
+
+    &__sphere {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        box-sizing: border-box;
+        width: 0.35em;
+        height: 0.35em;
+
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        background-color: currentColor;
+
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
+
+    &:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 0.4rem;
+    }
 }
 
-.hero_cta:hover {
-    gap: 0.4rem;
+@mixin connect-ring-animation {
+    .connect-link__arrow {
+        animation:
+            connect-arrow
+            var(--connect-duration)
+            ease-in-out
+            both;
+    }
+
+    .connect-link__sphere {
+        animation:
+            connect-ring
+            var(--connect-duration)
+            linear
+            both;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .connect-link:hover {
+        @include connect-ring-animation;
+    }
+}
+
+.connect-link:focus-visible {
+    @include connect-ring-animation;
+}
+
+@keyframes connect-arrow {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    // Arrow contracts into the emerging dot.
+    16% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+
+    84% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+
+    // Arrow returns after the ring dissipates.
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes connect-ring {
+    // Dot emerges as the arrow contracts.
+    0% {
+        opacity: 0;
+        width: 0.35em;
+        height: 0.35em;
+        background-color: currentColor;
+        transform: translate(-50%, -50%);
+    }
+
+    // Start moving immediately once the dot appears.
+    16% {
+        opacity: 1;
+        width: 0.35em;
+        height: 0.35em;
+        background-color: currentColor;
+        transform: translate(-50%, -50%);
+
+        animation-timing-function: ease-in-out;
+    }
+
+    // Stops outside the text.
+    27% {
+        opacity: 1;
+        width: 0.35em;
+        height: 0.35em;
+        background-color: currentColor;
+        transform: translate(
+            calc(-50% - var(--connect-travel)),
+            -50%
+        );
+    }
+
+    // Remove the fill before expansion starts.
+    32% {
+        opacity: 1;
+        width: 0.35em;
+        height: 0.35em;
+        background-color: transparent;
+    }
+
+    // Opacity changes independently of the continuous growth.
+    60% {
+        opacity: 0.85;
+    }
+
+    // One uninterrupted expansion from 32% to 88%.
+    88% {
+        opacity: 0;
+        width: 3.9em;
+        height: 3.9em;
+    }
+
+    100% {
+        opacity: 0;
+        width: 3.9em;
+        height: 3.9em;
+        background-color: transparent;
+        transform: translate(
+            calc(-50% - var(--connect-travel)),
+            -50%
+        );
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .connect-link__arrow,
+    .connect-link__sphere {
+        animation: none !important;
+    }
 }
 
 // =========================================
@@ -401,7 +585,7 @@ button {
     top: clamp(-1rem, -6vw, -1rem);
     right: clamp(-2rem, -2.5vw, -0.5rem);
 
-    z-index: 4;
+    z-index: variables.$layer-flower;
 }
 
 .flower img {
@@ -420,6 +604,7 @@ button {
     z-index: 0;
     pointer-events: none;
 
+    // Both webkit and normal properties are declared to fit any browser. The browser will use whichever it supports.
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
 
@@ -442,9 +627,9 @@ button {
 
     width: min(62rem, 80vw);
 
-    margin: 3rem auto 0;
+    margin: 3rem auto 5rem;
 
-    z-index: 3;
+    z-index: variables.$layer-book;
 }
 
 .book_image {
@@ -637,7 +822,7 @@ button {
 
     .book {
         width: min(100% - 2rem, 36rem);
-        margin: 3rem auto 0;
+        margin: 3rem auto 4rem;
         padding-block: 5rem; // top and bottom
 
         background-image: url("../../img/Projects/paper.jpg");
@@ -679,7 +864,7 @@ button {
     left: -3rem;
     top: 75rem;
 
-    z-index: 1;
+    z-index: variables.$layer-decoration;
 
     pointer-events: none;
 }
@@ -748,7 +933,7 @@ button {
     bottom: auto;
     transform: translate(-50%, -50%);
 
-    z-index: 200;
+    z-index: variables.$layer-magnifier;
     cursor: grab;
     user-select: none;
     touch-action: none;
@@ -927,6 +1112,125 @@ body > .page-surface {
     overflow: clip;
 }
 
+// =========================================
+// MAGNIFIER DISCOVERIES
+// =========================================
+
+.hidden-discovery {
+    position: absolute;
+    z-index: variables.$layer-discovery;
+
+    width: 7rem;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    font-family: variables.$font-notebook;
+    font-size: 0.7rem;
+    font-style: italic;
+    line-height: 1.4;
+    color: #0AFDF2;
+
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+
+    // An opaque background keeps underlying content out of the text.
+    background-color: variables.$color-background;
+    padding: 1rem;
+    border-radius: 50rem;
+    border: 0.3px solid variables.$color-accent;
+
+    white-space: normal;
+    overflow-wrap: break-word;
+
+    &--one {
+        top: 47rem;
+        left: 30%;
+    }
+
+    &--two {
+        top: 12rem;
+        left: 50%;
+    }
+
+    &--three {
+        bottom: 1rem;
+        left: 46%;
+    }
+}
+
+// Reveal the discoveries inside the magnified copy.
+.magnified-scene .hidden-discovery {
+    opacity: 1;
+}
+
+// Stacked notebook layout
+@media (max-width: 1240px) {
+    .hidden-discovery {
+        &--one {
+            top: 41rem;
+            left: 42%;
+        }
+
+        &--two {
+            top: 12rem;
+            right: 8%;
+        }
+
+        &--three {
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+// Smaller magnifier
+@media (max-width: 890px) {
+    .hidden-discovery {
+        width: 6rem;
+        padding: 0.35rem 0.45rem;
+
+        &--one {
+            top: 40rem;
+            left: 47%;
+        }
+
+        &--two {
+            top: 9rem;
+            right: 6%;
+        }
+
+        &--three {
+            bottom: 1.5rem;
+        }
+    }
+}
+
+// Small phones
+@media (max-width: 630px) {
+    .hidden-discovery {
+        width: 5.5rem;
+
+        &--one {
+            top: 45rem;
+            left: 50%;
+        }
+
+        &--two {
+            top: 8rem;
+            right: 5%;
+        }
+
+        &--three {
+            bottom: 1rem;
+        }
+    }
+}
+
 // ===========================================
 // MAGNIFYING GLASS NUDGE
 // ===========================================
@@ -1000,9 +1304,7 @@ body > .page-surface {
     18%, 72% { opacity: 0.8; }
 }
 
-body.menu-open .magnifier {
-    visibility: hidden;
-}
+
 
 
 
@@ -1238,9 +1540,6 @@ body.menu-open .magnifier {
 }
 
 // ABOUT MAGNIFYING GLASS
-.about-page .site-header {
-    z-index: 300; // Menu stays above the glass.
-}
 
 @media (min-width: 801px) {
     .about-page .magnifier {

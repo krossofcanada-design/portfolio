@@ -1,4 +1,20 @@
 // =========================================
+// MAIN PAGE LAYERS
+// Layer groups with each having their own 
+// layering system inside mimicing the way 
+// fx Figma and Adobe work.
+// =========================================
+
+$layer-decoration: 1;
+$layer-book: 3;
+$layer-flower: 4;
+$layer-discovery: 5;
+$layer-header: 100;
+$layer-magnifier: 200;
+
+
+
+// =========================================
 // COLORS
 // =========================================
 
@@ -19,8 +35,15 @@ $font-notebook: "Cormorant Garamond", serif;
 
 
 // =========================================
+// CONNECT LINK
+// =========================================
+
+$connect-font-size: clamp(1.25rem, 2vw, 1.6rem);
+$connect-duration: 1600ms;
+
+
+// =========================================
 // SHOWCASE COLORS
-// Separate shades preserve the current showcase design.
 // =========================================
 
 $color-paper: #f6f3eb;
@@ -36,7 +59,6 @@ $color-overlay-backdrop: rgb(1 10 6 / 72%);
 
 // =========================================
 // SHARED PAPER SURFACE
-// Paths resolve relative to compiled CSS in src/SCSS/.
 // =========================================
 
 $texture-paper: url("../../img/Projects/paper.jpg");
