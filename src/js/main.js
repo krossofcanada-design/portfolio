@@ -1,3 +1,6 @@
+// main.js imports all js modules and connects them to index.html and about.html
+
+
 import { initMagnifyingGlass } from "./components/MagnifyingGlass.js";
 
 initMagnifyingGlass();

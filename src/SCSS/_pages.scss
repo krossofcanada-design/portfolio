@@ -3,11 +3,11 @@
 
 // This scss file is connected to the index.html and about.html (and future contact.html) as they share a similar design.
 
-/* I wanted the way I wrote the code to reflect the way I think about design: as a set of layers that work together. In Figma, I can create a group and adjust the layers inside of it while also ordering groups in layers of their own. I tried to bring that same thinking into CSS. The main index-groups can be seen in _variables.scss.
+/* I wanted the way I wrote the code to reflect the way I work with design: as a set of layers with a relationship to each other within a set scene. In Figma, I can create a group and adjust the layers inside of it while also ordering groups in layers of their own. I tried to bring that same thinking into CSS with parent elements within index groups and positioning fx. The main index-groups can be seen in _variables.scss.
 
-For example, I used functions such as clamp() where an element could grow or shrink smoothly with the browser window. This let me define its behaviour in one place, instead of adding several media queries to change its size in steps. When a smooth adjustment was not enough and the layout needed to change, I put the media query next to the styles it affected. Clear headings make it easier to find and understand each part of the code.
+I used functions such as clamp() where an element could grow or shrink smoothly with the browser window. This let me define its behaviour in one place, instead of adding several media queries to change its size in steps. When a smooth adjustment was not enough and the layout needed to change, I put the media query next to the styles it affected. Clear headings make it easier to find and understand each part of the code.
 
-I also chose breakpoints by looking at where the design actually stopped working well. That meant the layout could respond to the space available, rather than changing only at conventional desktop, tablet, or mobile widths. */
+I also chose media query breakpoints by looking at where the design actually stopped working well. That meant the layout could respond to the space available, rather than changing only at conventional desktop, tablet, or mobile widths. */
 
 
 
@@ -269,7 +269,7 @@ button {
 }
 
 // ==============================================================
-// SPATIAL SCENE
+// SPATIAL SCENE - the frame for 
 // ==============================================================
 
 .scene {
@@ -319,7 +319,7 @@ button {
 
 @media (min-width: 891px) and (max-height: 700px) {
     .hero {
-        height: 48rem; // normally bottoms out at 42rem
+        height: 48rem;
     }
 }
 
@@ -883,7 +883,7 @@ button {
     justify-content: space-between;
     align-items: center;
 
-    padding: 1.5rem 3rem;
+    padding: 1.5rem 6rem; // 6rem because my right bottom corner browser extension ended up on top of the links
 
     font-family: variables.$font-fig;
     font-size: 0.65rem;
@@ -918,9 +918,11 @@ button {
     }
 }
 
-// =========================================
+
+
+// =========================================================================
 // MAGNIFYING GLASS
-// =========================================
+// =========================================================================
 
 .magnifier {
     position: absolute;
@@ -1264,7 +1266,7 @@ body > .page-surface {
 }
 
 .magnifier::after {
-    content: "Drag to explore";
+    content: "Drag to explore and find 3 hidden messages";
     position: absolute;
     top: calc(100% + 0.75rem);
     left: 50%;
@@ -1285,12 +1287,17 @@ body > .page-surface {
     background: rgba(2, 17, 11, 0.95);
 }
 
+// about.html insert here in context rather than in the about.html section 
+.about-page .magnifier::after {
+    content: "Drag to explore";
+}
+
 .magnifier--hint::before {
     animation: rim-glint 1.4s ease-in-out forwards;
 }
 
 .magnifier--hint::after {
-    animation: drag-label 3.8s ease-in-out forwards;
+    animation: drag-label 4.8s ease-in-out forwards; //
 }
 
 @keyframes rim-glint {
@@ -1309,6 +1316,9 @@ body > .page-surface {
 
 
 
+// For the about.html I used ChatGPT 6 Atra light to create a grid structure as the design is very simple and consists mainly of text. I uploaded my design and asked it to suggest the best way ahead using as much code from index.html as possible, including the magnifying glass. I implemented the suggested code The images required a few clamp adjustments and media query breakpoints to behave in the intended way, and different grid structures with respectively 2 and 3 columns were implemented.
+
+
 // ==============================================================
 // ABOUT & APPROACH - additional styles
 // ==============================================================
@@ -1323,6 +1333,8 @@ body > .page-surface {
         margin-inline: auto;
         padding: clamp(9rem, 14vw, 12rem) clamp(1.5rem, 8vw, 7rem) 4rem;
     }
+
+// Using a grid structure for this design as it's less demanding than the index.html
 
     .about-intro {
         display: grid;
@@ -1357,6 +1369,7 @@ body > .page-surface {
         line-height: 1.15;
     }
 
+    // Arrow function selects <p> that are direct children of .about-intro__text. The :not(.about-intro__thought) excludes the final centered emphasis from the regular paragraph styling.
     .about-intro__text > p:not(.about-intro__thought) {
         max-width: 35rem;
         margin-bottom: 2.25rem;
@@ -1366,12 +1379,15 @@ body > .page-surface {
         hyphens: auto;
     }
 
+    // Here the emphasis gets its own styling
     .about-intro__thought {
         margin: clamp(2rem, 5vw, 4rem) auto 0;
         font-size: clamp(1.4rem, 2.25vw, 2rem);
         line-height: 1.45;
         text-align: center;
     }
+
+// 3 column grid for the 3 educational foundations
 
     .about-foundations {
         display: grid;
@@ -1396,17 +1412,18 @@ body > .page-surface {
         line-height: 1.85;
     }
 
+// Grid structure going back to 2 columns.
+
     .about-approach {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.8fr);
         column-gap: clamp(2rem, 8vw, 9rem);
-        margin-top: clamp(4rem, 8vw, 8rem);
+        margin-top: clamp(2rem, 6vw, 4rem);
     }
 
     .about-approach__copy { min-width: 0; }
 
     .about-approach__lead,
-    .about-approach__copy > p:last-child,
     .about-approach__closing {
         font-size: clamp(1.05rem, 1.5vw, 1.3rem);
         line-height: 1.85;
@@ -1444,7 +1461,6 @@ body > .page-surface {
     }
 
     .about-approach__closing {
-        grid-column: 1 / -1;
         margin-top: clamp(2rem, 4vw, 4rem);
     }
 
@@ -1455,9 +1471,6 @@ body > .page-surface {
 // The page surface clips it at the viewport, not at the grid column.
 @media (min-width: 1100px) {
     .about-page {
-        .about-main {
-            --about-edge: calc(max(0px, (100vw - 90rem) / 2) + clamp(1.5rem, 8vw, 7rem));
-        }
 
         .about-pine {
             // Two rem extend beyond the viewport; the right edge stays in its column.
@@ -1465,11 +1478,6 @@ body > .page-surface {
             margin-left: calc(-1 * var(--about-edge) - 2rem);
         }
 
-        .about-statue {
-            // The image can extend off-screen, but its left edge stays in its column.
-            width: min(clamp(29rem, 42vw, 44rem), calc(100% + var(--about-edge) + 2rem));
-            margin-right: calc(-1 * var(--about-edge) - 2rem);
-        }
     }
 }
 

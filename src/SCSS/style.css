@@ -1,8 +1,8 @@
-/* I wanted the way I wrote the code to reflect the way I think about design: as a set of layers that work together. In Figma, I can create a group and adjust the layers inside of it while also ordering groups in layers of their own. I tried to bring that same thinking into CSS. The main index-groups can be seen in _variables.scss.
+/* I wanted the way I wrote the code to reflect the way I work with design: as a set of layers with a relationship to each other within a set scene. In Figma, I can create a group and adjust the layers inside of it while also ordering groups in layers of their own. I tried to bring that same thinking into CSS with parent elements within index groups and positioning fx. The main index-groups can be seen in _variables.scss.
 
-For example, I used functions such as clamp() where an element could grow or shrink smoothly with the browser window. This let me define its behaviour in one place, instead of adding several media queries to change its size in steps. When a smooth adjustment was not enough and the layout needed to change, I put the media query next to the styles it affected. Clear headings make it easier to find and understand each part of the code.
+I used functions such as clamp() where an element could grow or shrink smoothly with the browser window. This let me define its behaviour in one place, instead of adding several media queries to change its size in steps. When a smooth adjustment was not enough and the layout needed to change, I put the media query next to the styles it affected. Clear headings make it easier to find and understand each part of the code.
 
-I also chose breakpoints by looking at where the design actually stopped working well. That meant the layout could respond to the space available, rather than changing only at conventional desktop, tablet, or mobile widths. */
+I also chose media query breakpoints by looking at where the design actually stopped working well. That meant the layout could respond to the space available, rather than changing only at conventional desktop, tablet, or mobile widths. */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -652,7 +652,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 6rem;
   font-family: "Inter", sans-serif;
   font-size: 0.65rem;
   line-height: 1.4;
@@ -904,7 +904,7 @@ body > .page-surface {
 }
 
 .magnifier::after {
-  content: "Drag to explore";
+  content: "Drag to explore and find 3 hidden messages";
   position: absolute;
   top: calc(100% + 0.75rem);
   left: 50%;
@@ -925,12 +925,16 @@ body > .page-surface {
   background: rgba(2, 17, 11, 0.95);
 }
 
+.about-page .magnifier::after {
+  content: "Drag to explore";
+}
+
 .magnifier--hint::before {
   animation: rim-glint 1.4s ease-in-out forwards;
 }
 
 .magnifier--hint::after {
-  animation: drag-label 3.8s ease-in-out forwards;
+  animation: drag-label 4.8s ease-in-out forwards;
 }
 
 @keyframes rim-glint {
@@ -1029,13 +1033,12 @@ body > .page-surface {
   grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.8fr);
   -moz-column-gap: clamp(2rem, 8vw, 9rem);
        column-gap: clamp(2rem, 8vw, 9rem);
-  margin-top: clamp(4rem, 8vw, 8rem);
+  margin-top: clamp(2rem, 6vw, 4rem);
 }
 .about-page .about-approach__copy {
   min-width: 0;
 }
 .about-page .about-approach__lead,
-.about-page .about-approach__copy > p:last-child,
 .about-page .about-approach__closing {
   font-size: clamp(1.05rem, 1.5vw, 1.3rem);
   line-height: 1.85;
@@ -1071,7 +1074,6 @@ body > .page-surface {
   height: auto;
 }
 .about-page .about-approach__closing {
-  grid-column: 1/-1;
   margin-top: clamp(2rem, 4vw, 4rem);
 }
 .about-page .site-footer {
@@ -1079,16 +1081,9 @@ body > .page-surface {
 }
 
 @media (min-width: 1100px) {
-  .about-page .about-main {
-    --about-edge: calc(max(0px, (100vw - 90rem) / 2) + clamp(1.5rem, 8vw, 7rem));
-  }
   .about-page .about-pine {
     width: min(clamp(36rem, 57vw, 68rem), 100% + var(--about-edge) + 2rem);
     margin-left: calc(-1 * var(--about-edge) - 2rem);
-  }
-  .about-page .about-statue {
-    width: min(clamp(29rem, 42vw, 44rem), 100% + var(--about-edge) + 2rem);
-    margin-right: calc(-1 * var(--about-edge) - 2rem);
   }
 }
 @media (min-width: 801px) and (max-width: 1099px) {
