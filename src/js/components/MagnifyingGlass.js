@@ -1,5 +1,3 @@
-// This js funtion was created with ChatGPT Astra. After adjustments of sizing, initial placement, and the addition of a nudge in SCSS, and of proper refraction that wouldn't be experienced as nauseating, I further asked AI to walk me through the code and add educational comments along the way, so I can follwo the logic.
-
 // Export this setup function so main.js can start the magnifying glass.
 // Everything inside runs when initMagnifyingGlass() is called.
 export function initMagnifyingGlass() {

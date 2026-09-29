@@ -1,4 +1,4 @@
-/* I wanted the way I wrote the code to reflect the way I work with design: as a set of layers with a relationship to each other within a set scene. In Figma, I can create a group and adjust the layers inside of it while also ordering groups in layers of their own. I tried to bring that same thinking into CSS with parent elements within index groups and positioning fx. The main index-groups can be seen in _variables.scss.
+/* I wanted the way I wrote the code to reflect the way I work with design: as a set of layers with a relationship to each other within a set scene. In Figma, I can create a group and adjust the layers inside of it while also ordering groups in layers of their own. I tried to bring that same thinking into CSS. The main layered index-groups can be seen in _variables.scss.
 
 I used functions such as clamp() where an element could grow or shrink smoothly with the browser window. This let me define its behaviour in one place, instead of adding several media queries to change its size in steps. When a smooth adjustment was not enough and the layout needed to change, I put the media query next to the styles it affected. Clear headings make it easier to find and understand each part of the code.
 
@@ -155,7 +155,8 @@ button {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .menu {
+  .menu,
+  .project_links {
     animation: none;
   }
 }
@@ -186,7 +187,8 @@ button {
 .menu > a:not(:first-child)::before {
   content: "";
   display: block;
-  width: clamp(7rem, 20vw, 13rem);
+  width: 13rem;
+  max-width: 100%;
   height: 1px;
   margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
   background-color: #ffffff;
@@ -198,6 +200,7 @@ button {
   align-items: flex-start;
   gap: clamp(1.25rem, 3vh, 2.5rem);
   padding: 0 0 clamp(1rem, 3vh, 2rem) clamp(1.5rem, 8vw, 5rem);
+  animation: menu-slide-in 500ms ease-out both;
 }
 
 .project_links a,
@@ -210,7 +213,8 @@ button {
 
 @media (max-width: 890px) {
   .menu {
-    padding-top: 7rem;
+    padding-top: 2rem;
+    width: min(17rem, 100vw - 2rem);
   }
 }
 .scene {
@@ -450,7 +454,10 @@ button {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  backdrop-filter: blur(4px);
+  /*
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+  */
   -webkit-mask: url("../../img/Main/Flower-frost-mask.png") center/100% 100% no-repeat;
   mask: url("../../img/Main/Flower-frost-mask.png") center/100% 100% no-repeat;
 }
@@ -594,8 +601,8 @@ button {
 
 .water-drop--one {
   width: clamp(1rem, 2.5vw, 2rem);
-  left: clamp(5%, 12vw, 12%);
-  top: 78%;
+  left: clamp(5%, 12vw, 8%);
+  top: 88%;
 }
 
 .water-drop--two {
