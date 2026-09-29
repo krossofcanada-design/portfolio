@@ -2,6 +2,7 @@
  * Progressive enhancement: the project HTML remains the source of truth.
  * Only same-origin project links are enhanced. Failed requests navigate normally.
  */
+
 export class ProjectOverlay {
     #dialog;
     #content;
