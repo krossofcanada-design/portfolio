@@ -907,9 +907,11 @@ body > .page-surface {
   top: calc(100% + 0.75rem);
   left: 50%;
   z-index: 6;
-  width: -moz-max-content;
-  width: max-content;
+  width: 11rem;
   max-width: 80vw;
+  text-align: center;
+  white-space: normal;
+  text-wrap: balance;
   transform: translateX(-50%);
   pointer-events: none;
   opacity: 0;
