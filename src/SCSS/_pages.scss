@@ -158,6 +158,19 @@ button {
     transform: rotate(-45deg);
 }
 
+// Slightly smaller menu icons on narrow screens.
+@media (max-width: 750px) {
+    .menu_toggle {
+        width: 1.75rem;
+        height: 1.3125rem;
+    }
+
+    .menu_toggle[aria-expanded="true"] {
+        width: 2.1875rem;
+        height: 2.1875rem;
+    }
+}
+
 // =========================================
 // FULL-SCREEN MENU
 // =========================================
@@ -186,26 +199,6 @@ button {
     border-radius: 1.5rem;
     background-color: rgba(7, 23, 17, 0.94);
 
-    animation: menu-slide-in 500ms ease-out both;
-}
-
-@keyframes menu-slide-in {
-    from {
-        opacity: 0;
-        transform: translateY(-0.75rem);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .menu,
-    .project_links {
-        animation: none;
-    }
 }
 
 .menu > a,
@@ -248,6 +241,9 @@ button {
 // =========================================
 
 .project_links {
+    // Clip the links while their height animates.
+    overflow: hidden;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -255,7 +251,6 @@ button {
 
     padding: 0 0 clamp(1rem, 3vh, 2rem) clamp(1.5rem, 8vw, 5rem);
 
-    animation: menu-slide-in 500ms ease-out both;
 }
 
 .project_links a,
@@ -1296,7 +1291,7 @@ body > .page-surface {
 
 // about.html insert here in context rather than in the about.html section 
 .about-page .magnifier::after {
-    content: "Drag to explore and find the video";
+    content: "Drag to explore and find the hidden video";
 }
 
 .magnifier--hint::before {
@@ -1618,6 +1613,5 @@ body > .page-surface {
         transform: none;
     }
 }
-
 
 

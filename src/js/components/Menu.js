@@ -1,61 +1,112 @@
-// Export the setup function so another file, such as main.js,
-// can import it and start the menu.
+// Set up the main menu and its expandable Projects section.
 export function initMenu() {
-    // Find the menu button, the menu itself, the Projects button,
-    // and the list of project links in the HTML.
     const toggle = document.querySelector(".menu_toggle");
     const menu = document.querySelector("#main-menu");
     const projectsToggle = document.querySelector(".projects-toggle");
     const projectLinks = document.querySelector("#project-links");
 
-    // Stop if this page does not contain all the menu elements.
     if (!toggle || !menu || !projectsToggle || !projectLinks) return;
 
-    // Set the main menu to either its open or closed state.
-    // "open" is a Boolean: true or false.
-    function setMenuOpen(open) {
-        // hidden is the opposite of open:
-        // when open is true, hidden becomes false.
-        menu.hidden = !open;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const animations = new Map();
+    let menuOpen = false;
+    let projectsOpen = false;
 
-        // Tell assistive technology whether the menu button
-        // currently controls an expanded menu.
-        toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-controls", menu.id);
 
-        // Give the button a label that describes its current action.
-        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-
-        // Each time the main menu opens, start with the Projects
-        // subsection closed.
-        if (open) {
-            projectsToggle.setAttribute("aria-expanded", "false");
-            projectLinks.hidden = true;
+    // Measure the current frame before cancelling so rapid clicks reverse
+    // from the visible position instead of jumping to an endpoint.
+    function animateVisibility(element, open, expand = false) {
+        const wasHidden = element.hidden;
+        const style = getComputedStyle(element);
+        const current = {
+            opacity: style.opacity,
+            transform: style.transform,
+        };
+        if (expand) {
+            current.height = `${element.getBoundingClientRect().height}px`;
+            current.paddingBottom = style.paddingBottom;
+            current.marginBottom = style.marginBottom;
         }
+
+        animations.get(element)?.cancel();
+        animations.delete(element);
+        element.hidden = false;
+        element.inert = !open;
+
+        const natural = getComputedStyle(element);
+        const shown = { opacity: 1, transform: "translateY(0)" };
+        const concealed = { opacity: 0, transform: "translateY(-0.75rem)" };
+        if (expand) {
+            shown.height = `${element.getBoundingClientRect().height}px`;
+            shown.paddingBottom = natural.paddingBottom;
+            shown.marginBottom = "0px";
+            concealed.height = "0px";
+            concealed.paddingBottom = "0px";
+            // Remove the extra flex gap gradually as the section collapses.
+            concealed.marginBottom = `-${getComputedStyle(menu).rowGap}`;
+        }
+
+        if (reducedMotion.matches) {
+            element.hidden = !open;
+            return;
+        }
+
+        const animation = element.animate(
+            [wasHidden ? concealed : current, open ? shown : concealed],
+            {
+                duration: open ? 500 : 360,
+                easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+                fill: "both",
+            }
+        );
+        animations.set(element, animation);
+        animation.onfinish = () => {
+            if (animations.get(element) !== animation) return;
+            element.hidden = !open;
+            animation.cancel();
+            animations.delete(element);
+        };
     }
 
-    // Open the main menu if it is hidden; close it if it is visible.
-    toggle.addEventListener("click", () => {
-        setMenuOpen(menu.hidden);
-    });
+    function setMenuOpen(open) {
+        menuOpen = open;
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
 
-    // Expand or collapse the project links inside the menu.
+        if (open && menu.hidden) {
+            animations.get(projectLinks)?.cancel();
+            animations.delete(projectLinks);
+            projectsOpen = false;
+            projectsToggle.setAttribute("aria-expanded", "false");
+            projectLinks.hidden = true;
+            projectLinks.inert = true;
+        }
+        if (!open && menu.contains(document.activeElement)) toggle.focus();
+        animateVisibility(menu, open);
+    }
+
+    toggle.addEventListener("click", () => setMenuOpen(!menuOpen));
+
     projectsToggle.addEventListener("click", () => {
-        // HTML attributes contain text, so compare the value with "true".
-        const expanded =
-            projectsToggle.getAttribute("aria-expanded") === "true";
-
-        // Reverse the current state. If expanded was true,
-        // aria-expanded becomes false and the links become hidden.
-        projectsToggle.setAttribute("aria-expanded", String(!expanded));
-        projectLinks.hidden = expanded;
+        projectsOpen = !projectsOpen;
+        projectsToggle.setAttribute("aria-expanded", String(projectsOpen));
+        if (!projectsOpen && projectLinks.contains(document.activeElement)) {
+            projectsToggle.focus();
+        }
+        animateVisibility(projectLinks, projectsOpen, true);
     });
 
-    // Let a keyboard user close the menu with Escape.
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && !menu.hidden) {
+    // The toggle handles its own clicks; everything else outside closes it.
+    document.addEventListener("click", (event) => {
+        if (menuOpen && !menu.contains(event.target) && !toggle.contains(event.target)) {
             setMenuOpen(false);
+        }
+    });
 
-            // Return keyboard focus to the button that opens the menu.
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && menuOpen) {
+            setMenuOpen(false);
             toggle.focus();
         }
     });
