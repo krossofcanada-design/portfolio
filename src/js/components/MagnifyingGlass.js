@@ -70,6 +70,15 @@ export function initMagnifyingGlass() {
     optics.appendChild(magnifiedScene);
     lens.appendChild(optics);
 
+    // Start the video in the magnified copy.
+    // Set muted explicitly on the cloned video for silent autoplay.
+    magnifiedScene.querySelectorAll(".cell-discovery video").forEach((video) => {
+        video.muted = true;
+
+        // A browser may block autoplay; keep that from causing an error.
+        video.play().catch(() => {});
+    });
+
     // Create that edge effect. The returned function lets us resize it later.
     const resizeRefraction = createEdgeRefraction(magnifier, optics, refraction);
 

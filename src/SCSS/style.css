@@ -454,10 +454,7 @@ button {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  /*
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
-  */
+  backdrop-filter: blur(4px);
   -webkit-mask: url("../../img/Main/Flower-frost-mask.png") center/100% 100% no-repeat;
   mask: url("../../img/Main/Flower-frost-mask.png") center/100% 100% no-repeat;
 }
@@ -933,7 +930,7 @@ body > .page-surface {
 }
 
 .about-page .magnifier::after {
-  content: "Drag to explore";
+  content: "Drag to explore and find the video";
 }
 
 .magnifier--hint::before {
@@ -973,12 +970,14 @@ body > .page-surface {
   padding: clamp(9rem, 14vw, 12rem) clamp(1.5rem, 8vw, 7rem) 4rem;
 }
 .about-page .about-intro {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
   align-items: start;
   gap: clamp(2rem, 5vw, 6rem);
 }
 .about-page .about-pine {
+  position: relative;
   min-width: 0;
   margin-left: calc(-1 * clamp(1.5rem, 8vw, 7rem));
   padding-top: 1.5rem;
@@ -988,6 +987,31 @@ body > .page-surface {
   width: 100%;
   max-width: none;
   height: auto;
+}
+.about-page .cell-discovery {
+  display: none;
+  position: absolute;
+  top: 35%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  width: clamp(5rem, 10vw, 8rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.about-page .cell-discovery video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.about-page .magnified-scene .cell-discovery {
+  display: block;
 }
 .about-page .about-intro__text h1 {
   width: -moz-fit-content;
