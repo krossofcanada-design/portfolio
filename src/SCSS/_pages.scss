@@ -610,11 +610,10 @@ button {
     pointer-events: none;
 
     // Both webkit and normal properties are declared to fit any browser. The browser will use whichever it supports.
-    // The addition of the blur effect causes the magnifying glass to slag on the index page, even when the effect is disabled in the magnified scene copy. It works again on smaller screen sizes.
-/*
+
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
-*/
+
     -webkit-mask:
         url("../../img/Main/Flower-frost-mask.png")
         center / 100% 100% no-repeat;
