@@ -1,3 +1,9 @@
+/* All js files were created using ChatGPT sol with explanations of behaviour needed. All adjustments were done through promts and inserted at the right places. In this file, adjustments included reduced motion for a more organic feeling to the opening and closing of the menu, as well as adding an event to close the menu if visitor clicks outside the menu while it's open. Once all adjustments were in place, I asked ChatGPT to clearly explain the code, and to add OOP comments where applicable.
+*/
+
+// This module uses functions and closures rather than a custom class.
+// Nested functions retain access to local state such as menuOpen; this is
+// closure-based encapsulation, which is also useful outside OOP.
 // Set up the main menu and its expandable Projects section.
 export function initMenu() {
     const toggle = document.querySelector(".menu_toggle");
@@ -8,6 +14,8 @@ export function initMenu() {
     if (!toggle || !menu || !projectsToggle || !projectLinks) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // Built-in object use: create a Map instance whose get/set/delete methods
+    // manage the animations. This uses an object without defining our own class.
     const animations = new Map();
     let menuOpen = false;
     let projectsOpen = false;
@@ -52,6 +60,8 @@ export function initMenu() {
             return;
         }
 
+        // Browser object use: an Element method returns an Animation object.
+        // Its onfinish property and cancel() method control its lifecycle below.
         const animation = element.animate(
             [wasHidden ? concealed : current, open ? shown : concealed],
             {

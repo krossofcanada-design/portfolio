@@ -1,9 +1,17 @@
+/* All js files were created using ChatGPT sol with explanations of behaviour needed. All adjustments were done through promts and inserted at the right places. In this file, adjustments included size of magnified scene, refraction in order not to feel nauseating, the addition of memory to pointer's position, and decisions whether to allow assistive technology to use arrows on keyboard. The use of keyboard arrows were too complicated to run smoothly at present moment, but should be applied in the future to allow keyboard users to control the magnifying glass as well. Once all adjustments were in place, I asked ChatGPT to clearly explain the code, and to add OOP comments where applicable.
+*/
+
+// This module uses functions and closures rather than a custom class.
+// The nested handlers share local drag state through closures; that form of
+// encapsulation does not require an object or class.
 // Export this setup function so main.js can start the magnifying glass.
 // Everything inside runs when initMagnifyingGlass() is called.
 export function initMagnifyingGlass() {
 
     // The page surface contains the header, main scene, footer, and magnifier.
     // ?. safely returns undefined if the element before it was not found.
+    // Browser object use: document and the returned DOM elements expose
+    // properties and methods such as querySelector(), appendChild(), and remove().
     const scene = document.querySelector(".page-surface");
     const magnifier = scene?.querySelector(".magnifier");
     const lens = magnifier?.querySelector(".magnifier_lens");
@@ -267,6 +275,8 @@ export function initMagnifyingGlass() {
     scene.addEventListener("load", scheduleRefresh, true);
 
     // Watch the size of the page and magnifier themselves.
+    // OOP — instantiation of a browser-provided object. The observer keeps
+    // its own observation state, and observe() is an instance method.
     const resizeObserver = new ResizeObserver(scheduleRefresh);
     resizeObserver.observe(scene);
     resizeObserver.observe(magnifier);
@@ -279,6 +289,8 @@ export function initMagnifyingGlass() {
 
         if (!original || !copy) continue;
 
+        // OOP — another browser-provided instance, with its own callback
+        // and observed elements, configured by observe() below.
         const observer = new MutationObserver(() => {
             const replacement = original.cloneNode(true);
             cleanCopy(replacement);
@@ -331,6 +343,8 @@ function createEdgeRefraction(magnifier, optics, strength) {
     const canvas = document.createElement("canvas");
     canvas.width = mapSize;
     canvas.height = mapSize;
+    // Browser object use: getContext() returns an object with drawing methods
+    // such as createImageData() and putImageData(), used below.
     const context = canvas.getContext("2d");
 
     // If canvas is unavailable, keep the normal magnification.
@@ -440,6 +454,8 @@ function createEdgeRefraction(magnifier, optics, strength) {
 
     // Wait until the map image has loaded before applying the filter.
     // The ordinary magnification remains visible in the meantime.
+    // OOP — instantiation: Image creates an HTMLImageElement object.
+    // Its onload and src properties configure this particular image.
     const mapImage = new Image();
     mapImage.onload = () => {
         optics.style.filter = `url("#${filterId}")`;

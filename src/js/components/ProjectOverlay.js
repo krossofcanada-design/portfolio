@@ -1,12 +1,16 @@
-/**
- * This class lets a project page appear in a dialog above the current page.
- *
+/* All js files were created using ChatGPT sol with explanations of behaviour needed. All adjustments were done through promts and inserted at the right places. In this file, adjustments included the right scrolling behaviour, closing the project overlay, as well as putting it above the magnifying glass. Once all adjustments were in place, I asked ChatGPT to clearly explain the code, and to add OOP comments where applicable.*/
+
+/* This class lets a project page appear in a dialog above the current page.
+ 
  * The project still has its own HTML page and ordinary link. If the overlay
  * cannot work, the visitor can navigate to that page normally. Adding an
  * optional feature to an already working link is called progressive enhancement.
  */
 
+// OOP — class: groups overlay state and the methods that operate on it.
+// This class does not extend another class or override inherited methods.
 export class ProjectOverlay {
+    // OOP — encapsulation: private fields hide each instance's internal state.
     // Fields beginning with # are private. Only methods inside this class
     // can read or change them.
     #dialog;            // The <dialog> element.
@@ -20,13 +24,18 @@ export class ProjectOverlay {
     #onClick;           // Our document click handler.
     #pointerStartedOutside = false;
 
+    // OOP — constructor: runs when new ProjectOverlay(...) creates an instance.
+    // `this` refers to that instance throughout these methods.
     // The constructor prepares the object. A different project directory
     // can be supplied; otherwise it uses ../../../Projects/ relative to
     // this JavaScript module.
     constructor({ projectDirectory = new URL("../../../Projects/", import.meta.url) } = {}) {
+        // Built-in object use: URL instances provide parsed URL properties.
         this.#projectDirectory = new URL(projectDirectory, document.baseURI);
     }
 
+    // OOP — abstraction: public methods init(), open(), close(), and destroy()
+    // let callers use the overlay without managing its internal DOM or requests.
     // Set up the dialog and its event listeners. Call this once after
     // creating a ProjectOverlay object.
     init() {
@@ -58,6 +67,8 @@ export class ProjectOverlay {
         // glass could include it in its copy of the page.
         document.body.append(this.#dialog);
 
+        // OOP — instance context: arrow callbacks retain this method's `this`,
+        // so this.close() acts on the ProjectOverlay instance.
         // Close when the visitor uses the close button.
         this.#dialog.querySelector("button").addEventListener("click", () => this.close());
 
@@ -89,10 +100,13 @@ export class ProjectOverlay {
         this.#onClick = event => this.#handleClick(event);
         document.addEventListener("click", this.#onClick);
 
+        // OOP — method chaining: return the same instance to the caller.
         // Returning this allows code such as new ProjectOverlay().init().
         return this;
     }
 
+    // OOP — private method: #handleClick() is internal behavior that callers
+    // cannot access directly. #restorePage() below is private for the same reason.
     // Decide whether a clicked link qualifies for the overlay.
     #handleClick(event) {
         // Respect clicks already handled by other code, non-primary mouse
@@ -130,6 +144,8 @@ export class ProjectOverlay {
     async open(url, opener) {
         // Cancel a previous project request if another project is chosen.
         this.#controller?.abort();
+        // OOP — composition: the overlay holds a separate controller object
+        // and delegates request cancellation to its abort() method.
         const controller = new AbortController();
         this.#controller = controller;
 
@@ -180,6 +196,7 @@ export class ProjectOverlay {
 
             // Turn the returned HTML text into a separate document and
             // find the article marked as project content.
+            // Built-in object use: create a parser instance and call its method.
             const source = new DOMParser().parseFromString(await response.text(), "text/html");
             const article = source.querySelector("[data-project-content]");
             if (!article) throw new Error("Project article not found");
@@ -238,6 +255,7 @@ export class ProjectOverlay {
         }
     }
 
+    // OOP — instance method: works with this overlay's private state.
     // Close the dialog and cancel any request still loading.
     close() {
         this.#controller?.abort();
@@ -277,6 +295,8 @@ export class ProjectOverlay {
         this.#opener = null;
     }
 
+    // OOP — lifecycle method: explicitly release resources owned by this object.
+    // JavaScript does not call destroy() automatically.
     // Completely remove this overlay's listeners and dialog.
     // This is useful if the component is intentionally taken out of use.
     destroy() {
