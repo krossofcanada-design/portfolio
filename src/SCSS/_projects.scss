@@ -49,7 +49,7 @@ The final scss output has been through several adjustments in padding and placin
     margin: 0 auto;
     padding: clamp(4.5rem, 10vw, 11rem) clamp(1.5rem, 7vw, 7.5rem) clamp(2rem, 5vw, 5rem);
     color: variables.$color-ink;
-    background: variables.$color-paper variables.$texture-paper center top / cover; // fallback if my paper.jpg doesn't load or has transparent areas
+    background: variables.$color-paper variables.$texture-paper center top / cover; // fallback if my paper.webp doesn't load or has transparent areas
     box-shadow: variables.$shadow-paper;
     font-family: variables.$font-body;
     font-size: clamp(1rem, 1.6vw, 1.3rem);

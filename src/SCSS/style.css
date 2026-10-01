@@ -610,7 +610,7 @@ button {
     width: min(100% - 2rem, 36rem);
     margin: 3rem auto 4rem;
     padding-block: 5rem;
-    background-image: url("../../img/Projects/paper.jpg");
+    background-image: url("../../img/Projects/paper.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
